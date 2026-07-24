@@ -1,0 +1,1099 @@
+openapi: 3.1.0
+info:
+  title: MixerBox Calendar Gpt Gpt Plugins API
+  description: This plugin enables users to efficiently get information from Google Calendar.
+  version: v1
+servers:
+- url: https://calendar.mixerbox.com
+tags:
+- name: Gpt Plugins
+paths:
+  /api/gpt_plugins/calendar/authorize:
+    get:
+      operationId: Authorize
+      summary: Authorize the user's Google account permissions to access his/her calendars.
+      description: This api allow you to launch request for authorizing Google account permissions. You can launch the request without confirming with the user. A url will be returned, please ask the user to visit the url to continue.
+      parameters:
+      - in: query
+        name: src
+        schema:
+          type: string
+          default: google
+          enum:
+          - google
+        description: The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported.
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/calendar/logout:
+    get:
+      operationId: Logout
+      summary: Log out the user's Google account.
+      description: This api allow you to log out from a Google account, so that the user can log in to another one.
+      parameters:
+      - in: query
+        name: src
+        schema:
+          type: string
+          default: google
+          enum:
+          - google
+        description: The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported.
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogoutResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/calendar/list:
+    get:
+      operationId: ListCalendar
+      summary: Lists all of the user's calendars.
+      description: This api allow you to fetch all calendars of the user.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCalendarResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/calendar/events:
+    get:
+      operationId: ListEvent
+      summary: List events in a time range of a calendar by a calendar ID. Ask the user to select which calendar to list from the response of ListCalendar API.
+      description: This api allows you to list events in a time range by one of the user's calendar ID.
+      parameters:
+      - in: query
+        name: calendarId
+        schema:
+          type: string
+        description: The ID of the calendar to list events.
+        required: true
+      - in: query
+        name: from
+        schema:
+          type: string
+          format: RFC3339
+        description: The start time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.
+        required: true
+      - in: query
+        name: to
+        schema:
+          type: string
+          format: RFC3339
+        description: The end time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.
+        required: true
+      - in: query
+        name: pageToken
+        schema:
+          type: string
+        description: To fetch data from the next page, provide the 'nextPageToken' from the response of this API.
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEventResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/calendar/add_event:
+    post:
+      operationId: AddEvent
+      summary: Add a event on a calendar by a calendar ID.
+      description: This api allow you to add a event on a calendar by its ID with several options.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - calendarId
+              - start
+              - end
+              - summary
+              properties:
+                calendarId:
+                  type: string
+                  description: The calendar ID that this event is going to be added to.
+                  required: true
+                start:
+                  type: string
+                  description: The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance. If the event is an all-day event, provide in the format "yyyy-mm-dd", otherwise provide in the RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.
+                  required: true
+                end:
+                  type: string
+                  description: The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance. If the event is an all-day event, provide in the format "yyyy-mm-dd", otherwise provide in the RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.
+                  required: true
+                summary:
+                  type: string
+                  description: The summary of the event, If the user does not provide any summary, ask the user for it.
+                  required: true
+                attendeeEmails:
+                  type: array
+                  items:
+                    type: string
+                    format: email
+                  description: The array of emails to invite to the event, you can ask the user if there is any email to invite.
+                createMeetingLink:
+                  type: boolean
+                  default: false
+                  description: Flag indicating if the user want to create a Google Meet link for this event, you can ask the user if they want it.
+                description:
+                  type: string
+                  description: The description of the event, you can ask the user if they want it.
+                location:
+                  type: string
+                  description: The geographic location of the event, you can ask the user if they want it.
+                recurrence:
+                  type: array
+                  items:
+                    type: string
+                  description: The recurrence rule of this event, please provide the same format used by the Google Calendar API.
+                sendUpdates:
+                  type: string
+                  enum:
+                  - all
+                  - externalOnly
+                  - none
+                  description: 'Whether to send notifications about the creation of the new event, you can ask the user if they want it. "all": Notifications are sent to all guests. "externalOnly": Notifications are sent to non-Google Calendar guests only. "none": No notifications are sent.'
+                setDefaultReminder:
+                  type: boolean
+                  default: true
+                  description: Whether to set default reminder to the event, you can ask the user if they want it.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddEventResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/calendar/free:
+    get:
+      operationId: GetFreeTime
+      summary: Get free time slots in a time range from all the user's calendars.
+      description: This api allows you to fetch free time slots from all the user's calendars. The max time range is 50 days.
+      parameters:
+      - in: query
+        name: from
+        schema:
+          type: string
+          format: RFC3339
+        description: The start time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API.
+        required: true
+      - in: query
+        name: to
+        schema:
+          type: string
+          format: RFC3339
+        description: The end time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API.
+        required: true
+      - in: query
+        name: minDuration
+        schema:
+          type: string
+          format: number
+        description: To find time slots longer than this value (in seconds).
+      - in: query
+        name: pageToken
+        schema:
+          type: string
+          format: number
+        description: To fetch data from the next page, provide the 'nextPageToken' from the response of this API.
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFreeTimeResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/chat_pdf/upload:
+    post:
+      summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL link.
+      description: Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.
+      operationId: uploadFile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: The temporary URL of the PDF document to load.
+                  required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadPdfResponse'
+        '400':
+          description: Error occur when loading user providing file, the reason might be pdf is too many pages or the file is too large.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                    title: Error message.
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/chat_pdf/query:
+    post:
+      summary: Enable users to issue commands and ask questions related to the PDF content.
+      description: After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.
+      operationId: queryFile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              - query
+              properties:
+                url:
+                  type: string
+                  description: The url of PDF file.
+                  required: true
+                query:
+                  type: string
+                  description: The user query
+                  required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPdfResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/diagrams/render:
+    get:
+      operationId: render
+      summary: Generate the image of diagram and a online editor url to help edit the given diagram.
+      description: This api will generate the diagram image according to the given diagram content. Also provide a online editor url for further usage.
+      parameters:
+      - in: query
+        name: diagramType
+        schema:
+          type: string
+          default: vegalite
+          enum:
+          - vega
+          - vegalite
+          - mermaid
+          - plantuml
+          - d2
+          - nomnoml
+          - blockdiag
+          - seqdiag
+          - actdiag
+          - nwdiag
+          - rackdiag
+          - packetdiag
+        description: ''
+        required: true
+      - in: query
+        name: diagramContent
+        schema:
+          type: string
+        description: ''
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenderResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/image_gen:
+    get:
+      summary: After users express their ideas, the plugin generates optimized prompts to integrate with AI image-generation platforms and creates a link that connects users to the DALL·E 2 generation platform.
+      description: 'The plugin transforms inputs into prompts, specifically optimized for AI image generation, and generates a link that connects users to the DALL·E 2 generation platform. '
+      operationId: imageGeneration
+      parameters:
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Description of the image, do not contain space in query
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: string
+          default: '3'
+        description: The upper bound of prompts count
+        required: false
+      - in: query
+        name: get_image
+        schema:
+          type: boolean
+          default: true
+        description: Indicates if urls should be included in the response
+        required: true
+      - in: query
+        name: is_wallpaper
+        schema:
+          type: boolean
+          default: false
+        description: Indicates if mobile wallpapers should be generated
+        required: false
+      - in: query
+        name: model_type
+        schema:
+          type: string
+          enum:
+          - anime
+          - realistic
+          - landscape
+          - fantasy
+          - artistic
+          default: realistic
+        description: Indicates the style of the model used in generating the images
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageGenResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/photo_magic/super_resolution:
+    get:
+      operationId: EnhanceResolution
+      summary: Enhance image resolution with a powerful super-resolution API. Sharper details, improved quality. Seamless integration, customizable.
+      description: This API enhances image resolution, producing sharper details, and removes noise for improved visual quality. It seamlessly integrates into applications and offers customization options.
+      parameters:
+      - name: image_url
+        in: query
+        description: URL of the image to be enhanced
+        required: true
+        schema:
+          type: string
+          format: uri
+      - name: scale
+        in: query
+        description: Scaling factor (optional)
+        schema:
+          type: number
+          minimum: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/prompt_pro/prompt_optimize:
+    post:
+      description: Optimizing your question for clarity and completeness can improve the quality of the prompt. Refining the question to strive for perfection can greatly enhance the overall quality of the prompt.
+      operationId: rephrase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - prompt
+              properties:
+                prompt:
+                  type: string
+                  description: The user origin prompt
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptProResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/qr/generate:
+    post:
+      operationId: generateQr
+      summary: Generate QR code with user description
+      description: Generate QR code by url and appearance descriptions. Ignore the properties if the user is not provided and is not required.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The link provided by the user, used for converting to QRcode.
+                  required: true
+                darkColor:
+                  schema:
+                    type: string
+                    default: '#000000'
+                  required: false
+                  description: 'Optional, no need to provide by user. If the user is not provided, use #000000 as default.'
+                lightColor:
+                  schema:
+                    type: string
+                    default: '#ffffff'
+                  required: false
+                  description: 'Optional, no need to provide by user, If the user is not provided, use #ffffff as default.'
+                width:
+                  schema:
+                    type: number
+                    default: 768
+                  required: false
+                  description: Optional, no need to provide by user, the width of the QR Code.
+                highRecognitionRate:
+                  schema:
+                    type: boolean
+                    default: false
+                  required: false
+                  description: Optional, no need to provide by user, if the user mentioned that the QR code cannot be scanned, it's true, otherwise it's false.
+                prompt:
+                  schema:
+                    type: string
+                  required: false
+                  description: 'Translate the aesthetic description the user wants according to semantic analysis, for example: ''photographic portrait, 8k HD''.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateQrResponse'
+        '400':
+          description: The URL you provided might be invalid, please provide a valid URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                    title: Error message
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/scholar/upload:
+    post:
+      summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL link.
+      description: Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.
+      operationId: uploadFile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: The temporary URL of the PDF document to load.
+                  required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadPdfResponse_2'
+        '400':
+          description: Error occur when loading user providing file, the reason might be pdf is too many pages or the file is too large.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                    title: Error message.
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/scholar/query:
+    post:
+      summary: Enable users to issue commands and ask questions related to the PDF content.
+      description: After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.
+      operationId: queryFile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              - query
+              properties:
+                url:
+                  type: string
+                  description: The url of PDF file.
+                  required: true
+                query:
+                  type: string
+                  description: The user query
+                  required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPdfResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/scholar/abstract:
+    post:
+      summary: Retrieve abstracts of academic papers that are relevant to specific keywords or topics.
+      description: List out all the relevant abstracts related to the specific keywords or topics entered by the users.
+      operationId: searchAbstract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - query
+              - sortedByDate
+              properties:
+                query:
+                  type: string
+                  format: string
+                  description: The user query for the paper
+                  required: true
+                sort:
+                  type: string
+                  format: string
+                  default: cited_by_count
+                  enum:
+                  - cited_by_count
+                  - publication_date
+                  description: The sort order for results, defaults to cited_by_count. Valid values are cited_by_count or publication_date.
+                  required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryAbstractResponse'
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/translate/translate:
+    post:
+      operationId: translate
+      summary: Provide a description of how to express a particular phrase or term in a different language.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                translate_phrase:
+                  type: string
+                  required: true
+                  description: Phrase or concept that you would like to have translated into a foreign language.
+                learning_language:
+                  type: string
+                  required: true
+                  description: The language that the user is learning and inquiring about, it is important to use the full name of the language rather than an abbreviation or nickname. This will help to avoid confusion and ensure clear communication between both parties (e.g. English, Japanese).
+                native_language:
+                  type: string
+                  required: true
+                  description: The full name of the language to indicate the user's native language, which can be inferred from the language they used to ask their question (e.g. English, Japanese).
+                origin_query:
+                  type: string
+                  required: true
+                  description: The complete text of the user's inquiry.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  translate_phrase:
+                    type: string
+                    required: true
+                    description: Phrase or concept that you would like to have translated into a foreign language.
+                  learning_language:
+                    type: string
+                    required: true
+                    description: The language that the user is learning and inquiring about, it is important to use the full name of the language rather than an abbreviation or nickname. This will help to avoid confusion and ensure clear communication between both parties (e.g. English, Japanese).
+                  native_language:
+                    type: string
+                    required: true
+                    description: The full name of the language to indicate the user's native language, which can be inferred from the language they used to ask their question (e.g. English, Japanese).
+                  extra_response_instructions:
+                    type: array
+                    items:
+                      type: string
+                    description: The instructions which need chatgpt model to follow.
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/translate/explain:
+    post:
+      operationId: explain
+      summary: Provide a description of the significance and application of a particular phrase in a non-native language that the user is inquiring about.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                explain_phrase:
+                  type: string
+                  required: true
+                  description: A phrase or word in a non-native language that the user requires clarification or information on.
+                learning_language:
+                  type: string
+                  required: true
+                  description: The language that the user is learning and inquiring about, which can be inferred from question, it is important to use the full name of the language rather than an abbreviation or nickname. This will help to avoid confusion and ensure clear communication between both parties. (e.g. English, Japanese).
+                native_language:
+                  type: string
+                  required: true
+                  description: The full name of the language to indicate the user's native language, which can be inferred from the language they used to ask their question (e.g. English, Japanese).
+                origin_query:
+                  type: string
+                  required: true
+                  description: The complete text of the user's inquiry.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  explain_phrase:
+                    type: string
+                    description: A phrase or word in a non-native language that the user requires clarification or information on.
+                  learning_language:
+                    type: string
+                    description: The language that the user is learning and inquiring about, it is important to use the full name of the language rather than an abbreviation or nickname. This will help to avoid confusion and ensure clear communication between both parties. (e.g. English, Japanese).
+                  native_language:
+                    type: string
+                    description: The full name of the language to indicate the user's native language, which can be inferred from the language they used to ask their question (e.g. English, Japanese).
+                  extra_response_instructions:
+                    type: array
+                    items:
+                      type: string
+                    description: The instructions which need chatgpt model to follow.
+      tags:
+      - Gpt Plugins
+  /api/gpt_plugins/translate/task:
+    post:
+      operationId: task
+      summary: Offer guidance on the most effective approach to expressing or executing a task in a particular circumstance or context using a foreign language. Implement this endpoint when the user poses broad or overarching inquiries.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task_definition:
+                  type: string
+                  required: true
+                  description: A description of the objective or action that the user intends to complete or perform.
+                learning_language:
+                  type: string
+                  required: true
+                  description: The language that the user is learning and inquiring about, which can be inferred from question, it is important to use the full name of the language rather than an abbreviation or nickname. This will help to avoid confusion and ensure clear communication between both parties. (e.g. English, Japanese).
+                native_language:
+                  type: string
+                  required: true
+                  description: The full name of the language to indicate the user's native language, which can be inferred from the language they used to ask their question (e.g. English, Japanese).
+                origin_query:
+                  type: string
+                  required: true
+                  description: The complete text of the user's inquiry.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task_definition:
+                    type: string
+                    description: A description of the objective or action that the user intends to complete or perform.
+                  learning_language:
+                    type: string
+                    description: The language that the user is learning and inquiring about, it is important to use the full name of the language rather than an abbreviation or nickname. This will help to avoid confusion and ensure clear communication between both parties. (e.g. English, Japanese).
+                  native_language:
+                    type: string
+                    description: The full name of the language to indicate the user's native language, which can be inferred from the language they used to ask their question (e.g. English, Japanese).
+                  extra_response_instructions:
+                    type: array
+                    items:
+                      type: string
+                    description: The instructions which need chatgpt model to follow.
+      tags:
+      - Gpt Plugins
+components:
+  schemas:
+    LogoutResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The result of logout.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    ImageGenResponse:
+      title: ImageGenResponse
+      type: object
+      properties:
+        items:
+          title: Generated prompts or images
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageGenItem'
+          description: Generated prompts or images based on descriptions.
+        rules:
+          $ref: '#/components/schemas/Rules'
+    Rules:
+      title: The array of rules which recommend gpt to follow.
+      type: array
+      items:
+        type: string
+      description: The array of rules which recommend gpt to follow.
+    EventDateTime:
+      type: object
+      properties:
+        dateTime:
+          type: string
+          format: date-time
+          description: The date and time of the event
+        timeZone:
+          type: string
+          description: The time zone of the dateTime
+    GenerateQrResponse:
+      required:
+      - generateQr
+      type: object
+      properties:
+        pageUrl:
+          title: QR Code generation link
+          description: A clickable link on a webpage, not a link to an QR Code. This website will generate the QR Code.
+          type:
+          - string
+          - 'null'
+        items:
+          title: The array of QRCode results
+          description: The result of converting the link to QRCode.
+          type: array
+          items:
+            $ref: '#/components/schemas/GenerateQrItem'
+        rules:
+          title: The array of rules which recommend gpt to follow
+          description: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+    ListEventResponse:
+      type: object
+      properties:
+        items:
+          title: Search results.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEventItem'
+          description: The searched events from the specified calendar.
+        nextPageToken:
+          title: The 'pageToken' for the next page.
+          type: string
+          description: Provide this as 'nextPageToken' to fetch the next page.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    AuthorizeResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The url to authorize Google account permissions.
+    ListEventItem:
+      type: object
+      properties:
+        creator:
+          type: object
+          properties:
+            email:
+              type: string
+              description: The email of the event creator
+        end:
+          $ref: '#/components/schemas/EventDateTime'
+        hangoutLink:
+          type: string
+          description: The hangout link associated with the event
+        htmlLink:
+          type: string
+          description: The HTML link of the event
+        location:
+          type: string
+          description: The location of the event
+        start:
+          $ref: '#/components/schemas/EventDateTime'
+        summary:
+          type: string
+          description: The summary or title of the event
+    RenderResponse:
+      type: object
+      properties:
+        diagramEditorUrl:
+          type: string
+          description: The url to allow someone edit the diagrams with an online editor.
+        diagramImageUrl:
+          type: string
+          description: The url of diagrams iamge.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    searchPdfResponse:
+      title: searchPdfResponse
+      type: object
+      properties:
+        chunks:
+          title: The array of related query results
+          type: array
+          items:
+            type: string
+          description: The array of related query results
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    ListCalendarItem:
+      type: object
+      properties:
+        accessRole:
+          type: string
+          description: The access role for the calendar
+        description:
+          type: string
+          description: Additional description of the calendar
+        id:
+          type: string
+          description: The ID of the calendar
+        primary:
+          type: boolean
+          description: Indicates if the calendar is the primary calendar
+        summary:
+          type: string
+          description: The summary of the calendar, the user will use this to recognize their calendars
+        summaryOverride:
+          type: string
+          description: The summary overridden by the user if set, the user will use this to recognize their calendars
+        timeZone:
+          type: string
+          description: The time zone of the calendar
+    ImageGenItem:
+      type: object
+      properties:
+        prompt:
+          title: Prompt for the image generation model
+          type: string
+        url:
+          title: A clickable link on a webpage, not a link to an image. This website will generate the image.
+          type:
+          - string
+          - 'null'
+    GenerateQrItem:
+      type: object
+      properties:
+        qrUrl:
+          type: string
+          title: QRcode URL
+    AddEventResponse:
+      type: object
+      properties:
+        items:
+          title: Added result.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEventItem'
+          description: The event added to the specified calendar.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    GetFreeTimeResponse:
+      type: object
+      properties:
+        items:
+          title: Added result.
+          type: array
+          items:
+            $ref: '#/components/schemas/FreeTimeItem'
+          description: The event added to the specified calendar.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    PromptProResponse:
+      title: PromptProResponse
+      type: object
+      properties:
+        text:
+          type: string
+          description: The rephrased prompt text.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    ListCalendarResponse:
+      type: object
+      properties:
+        items:
+          title: Search results.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCalendarItem'
+          description: The searched calendars of the user. List events in a time range of a calendar by a calendar ID. You can ask the user to select a calendar in order to list events on that calendar.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    QueryAbstractResponse:
+      title: QueryAbstractResponse
+      type: object
+      properties:
+        items:
+          title: The array of related query results
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryAbstractItem'
+          description: The array of related query results
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    QueryAbstractItem:
+      type: object
+      properties:
+        title:
+          title: Related paper title
+          type: string
+        pdfUrl:
+          title: Related paper pdfUrl for user downloading
+          type: string
+        abstract:
+          title: Related paper abstract
+          type: string
+        paperUrl:
+          title: Related paper url
+          type: string
+        citedCount:
+          title: Related paper citation count
+          type: number
+    loadPdfResponse:
+      title: loadPdfResponse
+      required:
+      - url
+      - chunks
+      type: object
+      properties:
+        chunks:
+          title: The array of pdf summary results
+          type: array
+          items:
+            type: string
+          description: use this array to generate pdf summary results for user.
+    FreeTimeItem:
+      type: object
+      properties:
+        duration:
+          type: integer
+          description: Duration of the time slot in seconds
+        end:
+          type: integer
+          description: End timestamp of the time slot
+        start:
+          type: integer
+          description: Start timestamp of the time slot
+    loadPdfResponse_2:
+      title: loadPdfResponse
+      required:
+      - documentId
+      - chunks
+      type: object
+      properties:
+        chunks:
+          title: The array of pdf summary results
+          type: array
+          items:
+            type: string
+          description: use this array to generate pdf summary results for user.
