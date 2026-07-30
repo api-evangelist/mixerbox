@@ -1,23 +1,151 @@
 aid: mixerbox
 name: MixerBox
-description: 'MixerBox is a company surfaced as a portfolio company of initialized-capital, y-combinator
-  and added to the API Evangelist network as a stub for enrichment. Sector: consumer. This profile is
-  a lead awaiting the enrichment pipeline.'
+description: MixerBox ("Super-Apps to Live Easier") is a Y Combinator and Initialized Capital-backed consumer
+  software company that ships a broad family of AI assistant tools as ChatGPT plugins / GPT Actions. Its
+  catalog spans music and podcasts (OnePlayer, Podcasts), weather, a Google Calendar assistant, translation
+  and language learning, text-to-image generation, photo enhancement, PDF and academic-paper question
+  answering (ChatPDF, Scholar), QR generation, diagram rendering, and prompt optimization. Each product
+  publishes an OpenAI plugin manifest (/.well-known/ai-plugin.json) and an OpenAPI 3.1 specification;
+  authentication is service-level or open.
 url: https://raw.githubusercontent.com/api-evangelist/mixerbox/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - initialized-capital
 - y-combinator
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-plugin-manifests
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.mbplayer.com/favicon-app_store_icon.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Consumer
-apis: []
+- Artificial Intelligence
+- ChatGPT Plugins
+- GPT Actions
+- Music
+- Podcasts
+- Weather
+- Translation
+- Productivity
+apis:
+- aid: mixerbox:mixerbox-gpt-api
+  name: MixerBox Gpt API
+  description: The Gpt API from MixerBox — 9 operation(s) for gpt.
+  humanURL: https://www.mixerbox.com/oneplayer
+  baseURL: https://www.mbplayer.com
+  tags:
+  - Gpt
+  properties:
+  - type: OpenAPI
+    url: openapi/mixerbox-gpt-api-openapi.yml
+  - type: WellKnown
+    url: well-known/mixerbox-oneplayer-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-podcasts-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-weather-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-calendar-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-translate-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-imagegen-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-photomagic-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-chatpdf-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-scholar-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-qr-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-diagrams-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-promptpro-ai-plugin.json
+- aid: mixerbox:mixerbox-gpt-plugins-api
+  name: MixerBox Gpt Plugins API
+  description: The Gpt Plugins API from MixerBox — 19 operation(s) for gpt plugins.
+  humanURL: https://www.mixerbox.com/oneplayer
+  baseURL: https://www.mbplayer.com
+  tags:
+  - Gpt Plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/mixerbox-gpt-plugins-api-openapi.yml
+  - type: WellKnown
+    url: well-known/mixerbox-oneplayer-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-podcasts-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-weather-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-calendar-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-translate-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-imagegen-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-photomagic-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-chatpdf-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-scholar-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-qr-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-diagrams-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-promptpro-ai-plugin.json
+- aid: mixerbox:mixerbox-services-funcs-getweatherinfo-mobile-0-api
+  name: MixerBox Services?funcs=GetWeatherInfo&mobile=0 API
+  description: >-
+    The Services?funcs=GetWeatherInfo&mobile=0 API from MixerBox — 1 operation(s) for services?funcs=getweatherinfo&mobile=0.
+  humanURL: https://www.mixerbox.com/oneplayer
+  baseURL: https://www.mbplayer.com
+  tags:
+  - Services?funcs=GetWeatherInfo&mobile=0
+  properties:
+  - type: OpenAPI
+    url: openapi/mixerbox-services-funcs-getweatherinfo-mobile-0-api-openapi.yml
+  - type: WellKnown
+    url: well-known/mixerbox-oneplayer-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-podcasts-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-weather-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-calendar-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-translate-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-imagegen-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-photomagic-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-chatpdf-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-scholar-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-qr-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-diagrams-ai-plugin.json
+  - type: WellKnown
+    url: well-known/mixerbox-promptpro-ai-plugin.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,4 +153,39 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://mixerbox.com/
+  url: https://www.mixerbox.com/
+- type: TermsOfService
+  url: https://www.mixerbox.com/terms
+- type: PrivacyPolicy
+  url: https://www.mixerbox.com/privacy
+- type: Support
+  url: mailto:support@mixerbox.com
+- type: WellKnown
+  url: well-known/mixerbox-well-known.yml
+- type: MCPServer
+  url: mcp/mixerbox-mcp.yml
+- type: LLMsTxt
+  url: llms/mixerbox-llms.txt
+- type: Authentication
+  url: authentication/mixerbox-authentication.yml
+- type: Conventions
+  url: conventions/mixerbox-conventions.yml
+- type: Conformance
+  url: conformance/mixerbox-conformance.yml
+- type: ErrorCatalog
+  url: errors/mixerbox-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/mixerbox-lifecycle.yml
+- type: DataModel
+  url: data-model/mixerbox-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/mixerbox-agentic-access.yml
+- type: DomainSecurity
+  url: security/mixerbox-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 53
+  pass: local-v1
