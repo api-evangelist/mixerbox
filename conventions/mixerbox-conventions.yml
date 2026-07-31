@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/*-openapi-original.json + well-known/*-ai-plugin.json
+authentication:
+  style: service-level (OpenAI-managed) or none
+  detail: ai-plugin.json auth.type is 'service_http' (service-level token injected
+    by the ChatGPT plugin runtime) or 'none'. No end-user OAuth in the specs except
+    MixerBox Calendar, which exposes Authorize/Logout operations for Google Calendar
+    linkage.
+  artifact: authentication/mixerbox-authentication.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header/param documented.
+pagination:
+  supported: false
+  note: Result sets are returned as bounded arrays under a top-level 'gpt' object;
+    no cursor/offset params.
+localization:
+  supported: true
+  detail: Many operations take a 'locale' query param (en-us, zh-tw, ja-jp) to localize
+    results.
+response_envelope:
+  shape: 'Most GPT-action responses wrap items under a top-level object; music/podcast
+    plugins nest results under { gpt: { items: [...] } }.'
+versioning:
+  scheme: info.version 'v1' across all plugins; not expressed in the URL path.
+  artifact: lifecycle/mixerbox-lifecycle.yml
+errors:
+  artifact: errors/mixerbox-problem-types.yml
+  envelope: plain application/json with a human-readable description; not RFC 9457.
+rate_limiting:
+  signaled: false
+  note: No rate-limit headers documented.

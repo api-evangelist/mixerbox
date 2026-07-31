@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: well-known/mixerbox-*-ai-plugin.json (OpenAI plugin manifests)
+summary:
+  types:
+  - none
+  - service_http
+  detail: 'MixerBox exposes each product as a ChatGPT plugin / GPT Action. Authentication
+    is declared in each ai-plugin.json: ''service_http'' (a service-level bearer token
+    the ChatGPT runtime injects on the plugin''s behalf; end users do not supply a
+    key) or ''none'' (open GET/POST). No OpenAPI securitySchemes are declared in the
+    specs. MixerBox Calendar additionally exposes Authorize/Logout operations to link
+    a user''s Google Calendar.'
+plugins:
+- plugin: calendar
+  auth_type: service_http
+  api: openapi/mixerbox-calendar-openapi-original.json
+- plugin: chatpdf
+  auth_type: service_http
+  api: openapi/mixerbox-chatpdf-openapi-original.json
+- plugin: diagrams
+  auth_type: service_http
+  api: openapi/mixerbox-diagrams-openapi-original.json
+- plugin: imagegen
+  auth_type: service_http
+  api: openapi/mixerbox-imagegen-openapi-original.json
+- plugin: oneplayer
+  auth_type: none
+  api: openapi/mixerbox-oneplayer-openapi-original.json
+- plugin: photomagic
+  auth_type: service_http
+  api: openapi/mixerbox-photomagic-openapi-original.json
+- plugin: podcasts
+  auth_type: none
+  api: openapi/mixerbox-podcasts-openapi-original.json
+- plugin: promptpro
+  auth_type: service_http
+  api: openapi/mixerbox-promptpro-openapi-original.json
+- plugin: qr
+  auth_type: service_http
+  api: openapi/mixerbox-qr-openapi-original.json
+- plugin: scholar
+  auth_type: service_http
+  api: openapi/mixerbox-scholar-openapi-original.json
+- plugin: translate
+  auth_type: none
+  api: openapi/mixerbox-translate-openapi-original.json
+- plugin: weather
+  auth_type: none
+  api: openapi/mixerbox-weather-openapi-original.json

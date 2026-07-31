@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: derived
+format: plain-json
+source: openapi/*-openapi-original.json 4xx/5xx responses
+note: MixerBox GPT-plugin specs document few explicit error responses; most operations
+  declare only 200. Errors below are the ones the specs enumerate.
+problems:
+- status: 400
+  title: Error occur when loading user providing file, the reason might be pdf is
+    too many pages or the file is too large.
+  source_operation: openapi/mixerbox-chatpdf-openapi-original.json#uploadFile
+  path: /api/gpt_plugins/chat_pdf/upload
+- status: 400
+  title: The URL you provided might be invalid, please provide a valid URL.
+  source_operation: openapi/mixerbox-qr-openapi-original.json#generateQr
+  path: /api/gpt_plugins/qr/generate
+- status: 400
+  title: Error occur when loading user providing file, the reason might be pdf is
+    too many pages or the file is too large.
+  source_operation: openapi/mixerbox-scholar-openapi-original.json#uploadFile
+  path: /api/gpt_plugins/scholar/upload

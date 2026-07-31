@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/*-openapi-original.json
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: 'all 12 plugin specs declare openapi: 3.1.0'
+- id: openai-plugin-manifest
+  conforms: true
+  evidence: each service publishes /.well-known/ai-plugin.json (ChatGPT plugin / GPT
+    Actions manifest)
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 securitySchemes; plugin auth is service_http or none
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: error responses are plain application/json, not application/problem+json
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 403

@@ -1,0 +1,526 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MixerBox Calendar",
+    "description": "This plugin enables users to efficiently get information from Google Calendar.",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://calendar.mixerbox.com"
+    }
+  ],
+  "paths": {
+    "/api/gpt_plugins/calendar/authorize": {
+      "get": {
+        "operationId": "Authorize",
+        "summary": "Authorize the user's Google account permissions to access his/her calendars.",
+        "description": "This api allow you to launch request for authorizing Google account permissions. You can launch the request without confirming with the user. A url will be returned, please ask the user to visit the url to continue.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "src",
+            "schema": {
+              "type": "string",
+              "default": "google",
+              "enum": ["google"]
+            },
+            "description": "The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gpt_plugins/calendar/logout": {
+      "get": {
+        "operationId": "Logout",
+        "summary": "Log out the user's Google account.",
+        "description": "This api allow you to log out from a Google account, so that the user can log in to another one.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "src",
+            "schema": {
+              "type": "string",
+              "default": "google",
+              "enum": ["google"]
+            },
+            "description": "The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogoutResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gpt_plugins/calendar/list": {
+      "get": {
+        "operationId": "ListCalendar",
+        "summary": "Lists all of the user's calendars.",
+        "description": "This api allow you to fetch all calendars of the user.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCalendarResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gpt_plugins/calendar/events": {
+      "get": {
+        "operationId": "ListEvent",
+        "summary": "List events in a time range of a calendar by a calendar ID. Ask the user to select which calendar to list from the response of ListCalendar API.",
+        "description": "This api allows you to list events in a time range by one of the user's calendar ID.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "calendarId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the calendar to list events.",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "type": "string",
+              "format": "RFC3339"
+            },
+            "description": "The start time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string",
+              "format": "RFC3339"
+            },
+            "description": "The end time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "pageToken",
+            "schema": {
+              "type": "string"
+            },
+            "description": "To fetch data from the next page, provide the 'nextPageToken' from the response of this API.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gpt_plugins/calendar/add_event": {
+      "post": {
+        "operationId": "AddEvent",
+        "summary": "Add a event on a calendar by a calendar ID.",
+        "description": "This api allow you to add a event on a calendar by its ID with several options.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["calendarId", "start", "end", "summary"],
+                "properties": {
+                  "calendarId": {
+                    "type": "string",
+                    "description": "The calendar ID that this event is going to be added to.",
+                    "required": true
+                  },
+                  "start": {
+                    "type": "string",
+                    "description": "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance. If the event is an all-day event, provide in the format \"yyyy-mm-dd\", otherwise provide in the RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.",
+                    "required": true
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance. If the event is an all-day event, provide in the format \"yyyy-mm-dd\", otherwise provide in the RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API.",
+                    "required": true
+                  },
+                  "summary": {
+                    "type": "string",
+                    "description": "The summary of the event, If the user does not provide any summary, ask the user for it.",
+                    "required": true
+                  },
+                  "attendeeEmails": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "description": "The array of emails to invite to the event, you can ask the user if there is any email to invite."
+                  },
+                  "createMeetingLink": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Flag indicating if the user want to create a Google Meet link for this event, you can ask the user if they want it."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The description of the event, you can ask the user if they want it."
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "The geographic location of the event, you can ask the user if they want it."
+                  },
+                  "recurrence": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The recurrence rule of this event, please provide the same format used by the Google Calendar API."
+                  },
+                  "sendUpdates": {
+                    "type": "string",
+                    "enum": ["all", "externalOnly", "none"],
+                    "description": "Whether to send notifications about the creation of the new event, you can ask the user if they want it. \"all\": Notifications are sent to all guests. \"externalOnly\": Notifications are sent to non-Google Calendar guests only. \"none\": No notifications are sent."
+                  },
+                  "setDefaultReminder": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to set default reminder to the event, you can ask the user if they want it."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gpt_plugins/calendar/free": {
+      "get": {
+        "operationId": "GetFreeTime",
+        "summary": "Get free time slots in a time range from all the user's calendars.",
+        "description": "This api allows you to fetch free time slots from all the user's calendars. The max time range is 50 days.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "type": "string",
+              "format": "RFC3339"
+            },
+            "description": "The start time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API.",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string",
+              "format": "RFC3339"
+            },
+            "description": "The end time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API.",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "minDuration",
+            "schema": {
+              "type": "string",
+              "format": "number"
+            },
+            "description": "To find time slots longer than this value (in seconds)."
+          },
+          {
+            "in": "query",
+            "name": "pageToken",
+            "schema": {
+              "type": "string",
+              "format": "number"
+            },
+            "description": "To fetch data from the next page, provide the 'nextPageToken' from the response of this API.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetFreeTimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthorizeResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The url to authorize Google account permissions."
+          }
+        }
+      },
+      "LogoutResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The result of logout."
+          },
+          "rules": {
+            "title": "The array of rules which recommend gpt to follow.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The array of rules which recommend gpt to follow."
+          }
+        }
+      },
+      "ListCalendarResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Search results.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListCalendarItem"
+            },
+            "description": "The searched calendars of the user. List events in a time range of a calendar by a calendar ID. You can ask the user to select a calendar in order to list events on that calendar."
+          },
+          "rules": {
+            "title": "The array of rules which recommend gpt to follow.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The array of rules which recommend gpt to follow."
+          }
+        }
+      },
+      "ListCalendarItem": {
+        "type": "object",
+        "properties": {
+          "accessRole": {
+            "type": "string",
+            "description": "The access role for the calendar"
+          },
+          "description": {
+            "type": "string",
+            "description": "Additional description of the calendar"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the calendar"
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "Indicates if the calendar is the primary calendar"
+          },
+          "summary": {
+            "type": "string",
+            "description": "The summary of the calendar, the user will use this to recognize their calendars"
+          },
+          "summaryOverride": {
+            "type": "string",
+            "description": "The summary overridden by the user if set, the user will use this to recognize their calendars"
+          },
+          "timeZone": {
+            "type": "string",
+            "description": "The time zone of the calendar"
+          }
+        }
+      },
+      "EventDateTime": {
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time of the event"
+          },
+          "timeZone": {
+            "type": "string",
+            "description": "The time zone of the dateTime"
+          }
+        }
+      },
+      "ListEventResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Search results.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListEventItem"
+            },
+            "description": "The searched events from the specified calendar."
+          },
+          "nextPageToken": {
+            "title": "The 'pageToken' for the next page.",
+            "type": "string",
+            "description": "Provide this as 'nextPageToken' to fetch the next page."
+          },
+          "rules": {
+            "title": "The array of rules which recommend gpt to follow.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The array of rules which recommend gpt to follow."
+          }
+        }
+      },
+      "ListEventItem": {
+        "type": "object",
+        "properties": {
+          "creator": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "description": "The email of the event creator"
+              }
+            }
+          },
+          "end": {
+            "$ref": "#/components/schemas/EventDateTime"
+          },
+          "hangoutLink": {
+            "type": "string",
+            "description": "The hangout link associated with the event"
+          },
+          "htmlLink": {
+            "type": "string",
+            "description": "The HTML link of the event"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the event"
+          },
+          "start": {
+            "$ref": "#/components/schemas/EventDateTime"
+          },
+          "summary": {
+            "type": "string",
+            "description": "The summary or title of the event"
+          }
+        }
+      },
+      "AddEventResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Added result.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListEventItem"
+            },
+            "description": "The event added to the specified calendar."
+          },
+          "rules": {
+            "title": "The array of rules which recommend gpt to follow.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The array of rules which recommend gpt to follow."
+          }
+        }
+      },
+      "GetFreeTimeResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Added result.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FreeTimeItem"
+            },
+            "description": "The event added to the specified calendar."
+          },
+          "rules": {
+            "title": "The array of rules which recommend gpt to follow.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The array of rules which recommend gpt to follow."
+          }
+        }
+      },
+      "FreeTimeItem": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "integer",
+            "description": "Duration of the time slot in seconds"
+          },
+          "end": {
+            "type": "integer",
+            "description": "End timestamp of the time slot"
+          },
+          "start": {
+            "type": "integer",
+            "description": "Start timestamp of the time slot"
+          }
+        }
+      }
+    }
+  }
+}

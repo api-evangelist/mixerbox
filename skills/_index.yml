@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: generated
+source: grounded in operationIds verified in openapi/mixerbox-*-openapi-original.json
+skills:
+- file: mixerbox-play-music-and-podcasts.md
+  name: Play music and podcasts with MixerBox OnePlayer
+  api: openapi/mixerbox-oneplayer-openapi-original.json
+  operations: [getPlaylistByType, searchMusic, getPodcastsByCategory, searchPodcast]
+- file: mixerbox-manage-calendar.md
+  name: Manage a Google Calendar with MixerBox Calendar
+  api: openapi/mixerbox-calendar-openapi-original.json
+  operations: [Authorize, Logout, ListCalendar, ListEvent, AddEvent, GetFreeTime]
+- file: mixerbox-chat-with-pdf.md
+  name: Question a PDF with MixerBox ChatPDF
+  api: openapi/mixerbox-chatpdf-openapi-original.json
+  operations: [uploadFile, queryFile]
+- file: mixerbox-translate.md
+  name: Translate and learn languages with MixerBox Translate
+  api: openapi/mixerbox-translate-openapi-original.json
+  operations: [translate, explain, task]
+- file: mixerbox-generate-image-and-qr.md
+  name: Generate images and QR codes with MixerBox
+  api: openapi/mixerbox-imagegen-openapi-original.json
+  operations: [imageGeneration, EnhanceResolution, generateQr]

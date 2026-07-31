@@ -1,0 +1,13 @@
+# OpenAPI Overlay 1.0.0 - API Evangelist enhancements (does not mutate original)
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for MixerBox PhotoMagic
+  version: 1.0.0
+extends: openapi/mixerbox-photomagic-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: mixerbox
+    x-apievangelist-plugin: photomagic
+    x-apievangelist-category: chatgpt-plugin / gpt-action
+    x-apievangelist-enriched: '2026-07-20'

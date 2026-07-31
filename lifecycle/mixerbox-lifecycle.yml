@@ -1,0 +1,14 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/*-openapi-original.json
+versioning:
+  scheme: static
+  current: v1
+  note: All plugins report info.version 'v1'. No dated/URI versioning.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or Sunset/Deprecation header support found.
+status_page: null
+sla: null
+deprecated_operations: []

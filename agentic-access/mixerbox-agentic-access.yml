@@ -1,0 +1,397 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mixerbox-calendar-openapi-original.json, openapi/mixerbox-chatpdf-openapi-original.json,
+  openapi/mixerbox-diagrams-openapi-original.json, openapi/mixerbox-imagegen-openapi-original.json,
+  openapi/mixerbox-oneplayer-openapi-original.json, openapi/mixerbox-photomagic-openapi-original.json,
+  openapi/mixerbox-podcasts-openapi-original.json, openapi/mixerbox-promptpro-openapi-original.json,
+  openapi/mixerbox-qr-openapi-original.json, openapi/mixerbox-scholar-openapi-original.json,
+  openapi/mixerbox-translate-openapi-original.json, openapi/mixerbox-weather-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 31
+  by_action_class:
+    connected: 20
+    acting: 11
+  by_consequence:
+    read: 20
+    write: 11
+  human_in_the_loop_required: 0
+operations:
+- path: /api/gpt_plugins/calendar/authorize
+  method: get
+  operationId: Authorize
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/calendar/logout
+  method: get
+  operationId: Logout
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/calendar/list
+  method: get
+  operationId: ListCalendar
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/calendar/events
+  method: get
+  operationId: ListEvent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/calendar/add_event
+  method: post
+  operationId: AddEvent
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/calendar/free
+  method: get
+  operationId: GetFreeTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/chat_pdf/upload
+  method: post
+  operationId: uploadFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/chat_pdf/query
+  method: post
+  operationId: queryFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/diagrams/render
+  method: get
+  operationId: render
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/image_gen
+  method: get
+  operationId: imageGeneration
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getPlaylists
+  method: get
+  operationId: getPlaylistByType
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/searchMusic
+  method: get
+  operationId: searchMusic
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getPodcastsByCategory
+  method: get
+  operationId: getPodcastsByCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/searchPodcast
+  method: get
+  operationId: searchPodcast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/photo_magic/super_resolution
+  method: get
+  operationId: EnhanceResolution
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getPodcastsByCategoryMB
+  method: get
+  operationId: getPodcastsByCategoryInZhTw
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getPodcastsByCategory
+  method: get
+  operationId: getPodcastsByCategoryGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/searchPodcast
+  method: get
+  operationId: searchPodcast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getPopularPodcasts
+  method: get
+  operationId: getPopularPodcasts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getPopularEpisodes
+  method: get
+  operationId: getPopularEpisodes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getEpisodesByCategory
+  method: get
+  operationId: getEpisodesByCategoryInZhTw
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gpt/getEpisodesByPodcast
+  method: get
+  operationId: getEpisodesByPodcast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/gpt_plugins/prompt_pro/prompt_optimize
+  method: post
+  operationId: rephrase
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/qr/generate
+  method: post
+  operationId: generateQr
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/scholar/upload
+  method: post
+  operationId: uploadFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/scholar/query
+  method: post
+  operationId: queryFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/scholar/abstract
+  method: post
+  operationId: searchAbstract
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/translate/translate
+  method: post
+  operationId: translate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/translate/explain
+  method: post
+  operationId: explain
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/gpt_plugins/translate/task
+  method: post
+  operationId: task
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services?funcs=GetWeatherInfo&mobile=0
+  method: get
+  operationId: getWeatherInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

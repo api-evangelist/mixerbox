@@ -1,0 +1,231 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/*-openapi-original.json components.schemas
+note: Entities are the response schemas each MixerBox GPT-plugin returns. These are
+  read-model DTOs (music/podcast/episode/event/weather/image/qr items); there are
+  no cross-entity id relationships across the independent plugin services.
+entities:
+- api: calendar
+  entity: AuthorizeResponse
+  fields:
+  - url
+- api: calendar
+  entity: LogoutResponse
+  fields:
+  - message
+  - rules
+- api: calendar
+  entity: ListCalendarResponse
+  fields:
+  - items
+  - rules
+- api: calendar
+  entity: ListCalendarItem
+  fields:
+  - accessRole
+  - description
+  - id
+  - primary
+  - summary
+  - summaryOverride
+  - timeZone
+- api: calendar
+  entity: EventDateTime
+  fields:
+  - dateTime
+  - timeZone
+- api: calendar
+  entity: ListEventResponse
+  fields:
+  - items
+  - nextPageToken
+  - rules
+- api: calendar
+  entity: ListEventItem
+  fields:
+  - creator
+  - end
+  - hangoutLink
+  - htmlLink
+  - location
+  - start
+  - summary
+- api: calendar
+  entity: AddEventResponse
+  fields:
+  - items
+  - rules
+- api: calendar
+  entity: GetFreeTimeResponse
+  fields:
+  - items
+  - rules
+- api: calendar
+  entity: FreeTimeItem
+  fields:
+  - duration
+  - end
+  - start
+- api: chatpdf
+  entity: loadPdfResponse
+  fields:
+  - chunks
+- api: chatpdf
+  entity: searchPdfResponse
+  fields:
+  - chunks
+  - rules
+- api: diagrams
+  entity: RenderResponse
+  fields:
+  - diagramEditorUrl
+  - diagramImageUrl
+  - rules
+- api: imagegen
+  entity: ImageGenResponse
+  fields:
+  - items
+  - rules
+- api: imagegen
+  entity: ImageGenItem
+  fields:
+  - prompt
+  - url
+- api: imagegen
+  entity: Rules
+  fields: []
+- api: oneplayer
+  entity: PlaylistsResponse
+  fields:
+  - gpt
+- api: oneplayer
+  entity: MusicsResponse
+  fields:
+  - gpt
+- api: oneplayer
+  entity: PodcastsResponse
+  fields:
+  - gpt
+- api: oneplayer
+  entity: PlaylistItem
+  fields:
+  - title
+  - thumbnail
+  - ref
+  - size
+  - releaseDate
+  - owner
+  - url
+- api: oneplayer
+  entity: MusicItem
+  fields:
+  - title
+  - thumbnail
+  - ref
+  - url
+  - owner
+  - releaseDate
+  - views
+  - description
+- api: oneplayer
+  entity: PodcastItem
+  fields:
+  - title
+  - image
+  - author
+  - language
+  - url
+  - id
+- api: photomagic
+  entity: SuperResolutionResponse
+  fields:
+  - items
+  - rules
+- api: photomagic
+  entity: EditImageResponse
+  fields:
+  - items
+  - rules
+- api: photomagic
+  entity: ImageGenItem
+  fields:
+  - imageUrl
+- api: photomagic
+  entity: Rules
+  fields: []
+- api: podcasts
+  entity: PodcastsResponse
+  fields:
+  - gpt
+- api: podcasts
+  entity: PodcastItem
+  fields:
+  - title
+  - author
+  - language
+  - url
+  - id
+- api: podcasts
+  entity: EpisodesResponse
+  fields:
+  - gpt
+- api: podcasts
+  entity: EpisodeItem
+  fields:
+  - title
+  - url
+  - id
+  - guid
+  - duration
+- api: promptpro
+  entity: PromptProResponse
+  fields:
+  - text
+  - rules
+- api: qr
+  entity: GenerateQrResponse
+  fields:
+  - pageUrl
+  - items
+  - rules
+- api: qr
+  entity: GenerateQrItem
+  fields:
+  - qrUrl
+- api: scholar
+  entity: loadPdfResponse
+  fields:
+  - chunks
+- api: scholar
+  entity: searchPdfResponse
+  fields:
+  - chunks
+  - rules
+- api: scholar
+  entity: QueryAbstractResponse
+  fields:
+  - items
+  - rules
+- api: scholar
+  entity: QueryAbstractItem
+  fields:
+  - title
+  - pdfUrl
+  - abstract
+  - paperUrl
+  - citedCount
+- api: weather
+  entity: WeatherInfoResponse
+  fields:
+  - getWeatherInfo
+- api: weather
+  entity: WeatherItem
+  fields:
+  - timestamp
+  - description
+  - temperature
+  - clouds
+  - wind
+  - humidity
+  - pressure
+  - pop

@@ -1,0 +1,139 @@
+generated: '2026-07-20'
+method: searched
+source: live probe of /.well-known/ on each MixerBox plugin host
+note: 'Each MixerBox product is a ChatGPT plugin: /.well-known/ai-plugin.json (manifest)
+  + /.well-known/openapi.json (spec) both return 200. security.txt is 403 (S3 access-denied).
+  No openid-configuration / oauth-authorization-server / api-catalog present.'
+hosts:
+- host: https://calendar.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-calendar-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-calendar-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://weather.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-weather-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-weather-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://translate.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-translate-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-translate-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://imagegen.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-imagegen-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-imagegen-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://photomagic.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-photomagic-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-photomagic-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://scholar.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-scholar-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-scholar-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://podcasts.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-podcasts-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-podcasts-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://qr.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-qr-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-qr-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://diagrams.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-diagrams-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-diagrams-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://chatpdf.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-chatpdf-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-chatpdf-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://promptpro.mixerbox.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-promptpro-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /.well-known/openapi.json
+    status: 200
+    file: ../openapi/mixerbox-promptpro-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
+- host: https://www.mbplayer.com
+  documents:
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: mixerbox-oneplayer-ai-plugin.json
+    type: OpenAI plugin / GPT Action manifest
+  - path: /openapi.json
+    status: 200
+    file: ../openapi/mixerbox-oneplayer-openapi-original.json
+  - path: /.well-known/security.txt
+    status: 403
