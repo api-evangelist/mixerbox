@@ -2,8 +2,8 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: derived from openapi/ operations (no official MixerBox MCP server found)
-note: MixerBox publishes GPT-plugin OpenAPI actions, not a hosted MCP server. This
-  is a candidate tool list an MCP wrapper could expose.
+note: MixerBox publishes GPT-plugin OpenAPI actions, not a hosted MCP server. This is a candidate tool
+  list an MCP wrapper could expose.
 servers: []
 tools:
 - name: Authorize
@@ -16,8 +16,8 @@ tools:
   description: Lists all of the user's calendars.
   source_operation: openapi/mixerbox-calendar-openapi-original.json#ListCalendar
 - name: ListEvent
-  description: List events in a time range of a calendar by a calendar ID. Ask the
-    user to select which calendar to list from the response of ListCalendar API.
+  description: List events in a time range of a calendar by a calendar ID. Ask the user to select which
+    calendar to list from the response of ListCalendar API.
   source_operation: openapi/mixerbox-calendar-openapi-original.json#ListEvent
 - name: AddEvent
   description: Add a event on a calendar by a calendar ID.
@@ -26,21 +26,17 @@ tools:
   description: Get free time slots in a time range from all the user's calendars.
   source_operation: openapi/mixerbox-calendar-openapi-original.json#GetFreeTime
 - name: uploadFile
-  description: Enable users to upload a PDF file by providing a publicly accessible
-    PDF URL link.
+  description: Enable users to upload a PDF file by providing a publicly accessible PDF URL link.
   source_operation: openapi/mixerbox-chatpdf-openapi-original.json#uploadFile
 - name: queryFile
-  description: Enable users to issue commands and ask questions related to the PDF
-    content.
+  description: Enable users to issue commands and ask questions related to the PDF content.
   source_operation: openapi/mixerbox-chatpdf-openapi-original.json#queryFile
 - name: render
-  description: Generate the image of diagram and a online editor url to help edit
-    the given diagram.
+  description: Generate the image of diagram and a online editor url to help edit the given diagram.
   source_operation: openapi/mixerbox-diagrams-openapi-original.json#render
 - name: imageGeneration
-  description: "After users express their ideas, the plugin generates optimized prompts\
-    \ to integrate with AI image-generation platforms and creates a link that connects\
-    \ users to the DALL\xB7E 2 generation platform."
+  description: After users express their ideas, the plugin generates optimized prompts to integrate with
+    AI image-generation platforms and creates a link that connects users to the DALL·E 2 generation platform.
   source_operation: openapi/mixerbox-imagegen-openapi-original.json#imageGeneration
 - name: getPlaylistByType
   description: Enable users to query music playlists by type.
@@ -55,22 +51,20 @@ tools:
   description: Allow users to search for podcast.
   source_operation: openapi/mixerbox-oneplayer-openapi-original.json#searchPodcast
 - name: EnhanceResolution
-  description: Enhance image resolution with a powerful super-resolution API. Sharper
-    details, improved quality. Seamless integration, customizable.
+  description: Enhance image resolution with a powerful super-resolution API. Sharper details, improved
+    quality. Seamless integration, customizable.
   source_operation: openapi/mixerbox-photomagic-openapi-original.json#EnhanceResolution
 - name: getPodcastsByCategoryInZhTw
-  description: "Users can request a specific kind of zh-tw (Zh\u014Dngw\xE9n) podcast\
-    \ using relevant keywords related to social-and-culture, news, comedy-and-music,\
-    \ art, business, technology, recreation, etc..."
+  description: Users can request a specific kind of zh-tw (Zhōngwén) podcast using relevant keywords related
+    to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...
   source_operation: openapi/mixerbox-podcasts-openapi-original.json#getPodcastsByCategoryInZhTw
 - name: getPodcastsByCategoryGlobal
-  description: Users can request a specific kind of podcast using relevant keywords
-    related to music, comedy, news, crime, education, history, TV & film, government,
-    society & culture, and religion & spirituality.
+  description: Users can request a specific kind of podcast using relevant keywords related to music,
+    comedy, news, crime, education, history, TV & film, government, society & culture, and religion &
+    spirituality.
   source_operation: openapi/mixerbox-podcasts-openapi-original.json#getPodcastsByCategoryGlobal
 - name: searchPodcast
-  description: Users can search for podcast and receive an array of podcast URLs for
-    streaming.
+  description: Users can search for podcast and receive an array of podcast URLs for streaming.
   source_operation: openapi/mixerbox-podcasts-openapi-original.json#searchPodcast
 - name: getPopularPodcasts
   description: Users can get popular, hot podcasts
@@ -79,46 +73,47 @@ tools:
   description: Users can get popular, hot podcast episodes
   source_operation: openapi/mixerbox-podcasts-openapi-original.json#getPopularEpisodes
 - name: getEpisodesByCategoryInZhTw
-  description: "Users can request a specific kind of zh-tw (Zh\u014Dngw\xE9n) episodes\
-    \ using relevant keywords related to social-and-culture, news, comedy-and-music,\
-    \ art, business, technology, recreation, etc..."
+  description: Users can request a specific kind of zh-tw (Zhōngwén) episodes using relevant keywords
+    related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...
   source_operation: openapi/mixerbox-podcasts-openapi-original.json#getEpisodesByCategoryInZhTw
 - name: getEpisodesByPodcast
   description: Users can get latest podcast episodes by podcastId
   source_operation: openapi/mixerbox-podcasts-openapi-original.json#getEpisodesByPodcast
 - name: rephrase
-  description: Optimizing your question for clarity and completeness can improve the
-    quality of the prompt. Refining the question to st
+  description: Optimizing your question for clarity and completeness can improve the quality of the prompt.
+    Refining the question to st
   source_operation: openapi/mixerbox-promptpro-openapi-original.json#rephrase
 - name: generateQr
   description: Generate QR code with user description
   source_operation: openapi/mixerbox-qr-openapi-original.json#generateQr
 - name: uploadFile
-  description: Enable users to upload a PDF file by providing a publicly accessible
-    PDF URL link.
+  description: Enable users to upload a PDF file by providing a publicly accessible PDF URL link.
   source_operation: openapi/mixerbox-scholar-openapi-original.json#uploadFile
 - name: queryFile
-  description: Enable users to issue commands and ask questions related to the PDF
-    content.
+  description: Enable users to issue commands and ask questions related to the PDF content.
   source_operation: openapi/mixerbox-scholar-openapi-original.json#queryFile
 - name: searchAbstract
-  description: Retrieve abstracts of academic papers that are relevant to specific
-    keywords or topics.
+  description: Retrieve abstracts of academic papers that are relevant to specific keywords or topics.
   source_operation: openapi/mixerbox-scholar-openapi-original.json#searchAbstract
 - name: translate
-  description: Provide a description of how to express a particular phrase or term
-    in a different language.
+  description: Provide a description of how to express a particular phrase or term in a different language.
   source_operation: openapi/mixerbox-translate-openapi-original.json#translate
 - name: explain
-  description: Provide a description of the significance and application of a particular
-    phrase in a non-native language that the user is inquiring about.
+  description: Provide a description of the significance and application of a particular phrase in a non-native
+    language that the user is inquiring about.
   source_operation: openapi/mixerbox-translate-openapi-original.json#explain
 - name: task
-  description: Offer guidance on the most effective approach to expressing or executing
-    a task in a particular circumstance or context using a foreign language. Implement
-    this endpoint when the user poses broad or overarching inquiries.
+  description: Offer guidance on the most effective approach to expressing or executing a task in a particular
+    circumstance or context using a foreign language. Implement this endpoint when the user poses broad
+    or overarching inquiries.
   source_operation: openapi/mixerbox-translate-openapi-original.json#task
 - name: getWeatherInfo
-  description: Get current or forecast weather data based on given locations,  including
-    over 200,000 cities around the world.
+  description: Get current or forecast weather data based on given locations,  including over 200,000
+    cities around the world.
   source_operation: openapi/mixerbox-weather-openapi-original.json#getWeatherInfo
+deployment:
+  mode: none
+  verified: derived
+  tools: 31
+  checked: '2026-08-12'
+  source: catalog MCP census

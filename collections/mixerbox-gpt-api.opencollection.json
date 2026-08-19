@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MixerBox Calendar Gpt API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gpt",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enable users to query music playlists by type.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getPlaylists",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the user's language: `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the kind of music playlists which is user want to listen"
+              }
+            ]
+          },
+          "docs": "Users can request music playlists by entering keywords related to specific moods, genres, rankings, popularity, and featured content."
+        },
+        {
+          "info": {
+            "name": "Allow users to search for music.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/searchMusic",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The music name be searched"
+              }
+            ]
+          },
+          "docs": "Users can search for music and receive an array of music URLs for streaming."
+        },
+        {
+          "info": {
+            "name": "Enable users to query podcasts by type.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getPodcastsByCategory",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the user's language: `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query",
+                "description": "Type of podcast, 1310 for MUSIC, 1303 for COMEDY, 1489 for NEWS, 1488 for TRUE_CRIME, 1304 for EDUCATION, 1309 for TV_FILM, 1487 for HISTORY, 1314 for RELIGION_SPIRITUALITY, 1511 for GOVERNMENT, 1324 for SOCIETY_CULTURE"
+              }
+            ]
+          },
+          "docs": "Users can request a specific kind of podcast using relevant keywords related to music, comedy, news, crime, education, history, TV & film, government, society & culture, and religion & spirituality."
+        },
+        {
+          "info": {
+            "name": "Allow users to search for podcast.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/searchPodcast",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The podcast name be searched"
+              }
+            ]
+          },
+          "docs": "Users can search for podcast and receive an array of podcast URLs for streaming."
+        },
+        {
+          "info": {
+            "name": "Users can request a specific kind of zh-tw (Zhōngwén) podcast using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getPodcastsByCategoryMB",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the user's language: `zh-tw (Zhōngwén)`"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query",
+                "description": "Type of podcast, social-and-culture, news, comedy-and-music, art, business, technology, recreation, education, kid-and-family, fiction, health-and-fitness, sport, crime, history, tv-and-movie, religion, science, music, government"
+              }
+            ]
+          },
+          "docs": "Users can request a specific kind of zh-tw (Zhōngwén) podcast using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc..."
+        },
+        {
+          "info": {
+            "name": "Users can get popular, hot podcasts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getPopularPodcasts",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the user's language: `zh-tw (Zhōngwén), `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+              }
+            ]
+          },
+          "docs": "Users can get popular, hot podcasts"
+        },
+        {
+          "info": {
+            "name": "Users can get popular, hot podcast episodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getPopularEpisodes",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the user's language: `zh-tw (Zhōngwén), `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+              }
+            ]
+          },
+          "docs": "Users can get popular, hot podcast episodes"
+        },
+        {
+          "info": {
+            "name": "Users can request a specific kind of zh-tw (Zhōngwén) episodes using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getEpisodesByCategory",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Determine the parameter based on the user's language: `zh-tw (Zhōngwén)`"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query",
+                "description": "Type of podcast, social-and-culture, news, comedy-and-music, art, business, technology, recreation, education, kid-and-family, fiction, health-and-fitness, sport, crime, history, tv-and-movie, religion, science, music, government"
+              }
+            ]
+          },
+          "docs": "Users can request a specific kind of zh-tw (Zhōngwén) episodes using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc..."
+        },
+        {
+          "info": {
+            "name": "Users can get latest podcast episodes by podcastId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/gpt/getEpisodesByPodcast",
+            "params": [
+              {
+                "name": "podcastId",
+                "value": "",
+                "type": "query",
+                "description": "The podcastId be query"
+              }
+            ]
+          },
+          "docs": "Users can get latest podcast episodes by podcastId"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

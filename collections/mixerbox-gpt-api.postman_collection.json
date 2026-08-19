@@ -1,0 +1,813 @@
+{
+  "item": [
+    {
+      "id": "96777e41-ac99-4f3e-8ab3-02273f2d7178",
+      "name": "Gpt",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bade3009-90e0-4123-acfb-566e303e0fa0",
+          "name": "Enable users to query music playlists by type.",
+          "request": {
+            "name": "Enable users to query music playlists by type.",
+            "description": {
+              "content": "Users can request music playlists by entering keywords related to specific moods, genres, rankings, popularity, and featured content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gpt",
+                "getPlaylists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "(Required) Determine the parameter based on the user's language: `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Determine the parameter based on the kind of music playlists which is user want to listen"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bce61e15-0bd2-4dac-b506-5730c1a26125",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getPlaylists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"thumbnail\": \"string\",\n        \"ref\": \"string\",\n        \"size\": 540.9319191218854,\n        \"releaseDate\": \"string\",\n        \"owner\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"thumbnail\": \"string\",\n        \"ref\": \"string\",\n        \"size\": 8535.86941787223,\n        \"releaseDate\": \"string\",\n        \"owner\": \"string\",\n        \"url\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1ed556d-1588-4e76-a096-dbfb22373dfd",
+          "name": "Allow users to search for music.",
+          "request": {
+            "name": "Allow users to search for music.",
+            "description": {
+              "content": "Users can search for music and receive an array of music URLs for streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gpt",
+                "searchMusic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The music name be searched"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1afd983-83dc-467b-8f00-56e6cf611087",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "searchMusic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"thumbnail\": \"string\",\n        \"ref\": \"string\",\n        \"url\": \"string\",\n        \"owner\": \"string\",\n        \"releaseDate\": \"string\",\n        \"views\": 7542.1978298002405,\n        \"description\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"thumbnail\": \"string\",\n        \"ref\": \"string\",\n        \"url\": \"string\",\n        \"owner\": \"string\",\n        \"releaseDate\": \"string\",\n        \"views\": 1097.1732114260035,\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19c5e8f8-31bc-4e16-85b2-8dd0181c18cb",
+          "name": "Enable users to query podcasts by type.",
+          "request": {
+            "name": "Enable users to query podcasts by type.",
+            "description": {
+              "content": "Users can request a specific kind of podcast using relevant keywords related to music, comedy, news, crime, education, history, TV & film, government, society & culture, and religion & spirituality.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gpt",
+                "getPodcastsByCategory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "(Required) Determine the parameter based on the user's language: `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryId",
+                  "value": "1310",
+                  "description": "(Required) Type of podcast, 1310 for MUSIC, 1303 for COMEDY, 1489 for NEWS, 1488 for TRUE_CRIME, 1304 for EDUCATION, 1309 for TV_FILM, 1487 for HISTORY, 1314 for RELIGION_SPIRITUALITY, 1511 for GOVERNMENT, 1324 for SOCIETY_CULTURE"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c138a9d2-cecb-404c-8cd7-71414ba345ba",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getPodcastsByCategory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "1310"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2b76be6-1951-4ea0-af74-91713b1bd8ab",
+          "name": "Allow users to search for podcast.",
+          "request": {
+            "name": "Allow users to search for podcast.",
+            "description": {
+              "content": "Users can search for podcast and receive an array of podcast URLs for streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gpt",
+                "searchPodcast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The podcast name be searched"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65d6b300-d852-4e48-b6f7-121a77a12e3b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "searchPodcast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b6c6114-0e09-4f7d-a901-41759243823d",
+          "name": "Users can request a specific kind of zh-tw (Zhōngwén) podcast using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...",
+          "request": {
+            "name": "Users can request a specific kind of zh-tw (Zhōngwén) podcast using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...",
+            "description": {},
+            "url": {
+              "path": [
+                "gpt",
+                "getPodcastsByCategoryMB"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "zh-tw",
+                  "description": "(Required) Determine the parameter based on the user's language: `zh-tw (Zhōngwén)`"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryId",
+                  "value": "business",
+                  "description": "(Required) Type of podcast, social-and-culture, news, comedy-and-music, art, business, technology, recreation, education, kid-and-family, fiction, health-and-fitness, sport, crime, history, tv-and-movie, religion, science, music, government"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "983eb0df-4598-4f80-8017-8ecf715eb1d6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getPodcastsByCategoryMB"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "zh-tw"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "business"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec3ff13d-84d4-40f3-b29c-3c105fb1057e",
+          "name": "Users can get popular, hot podcasts",
+          "request": {
+            "name": "Users can get popular, hot podcasts",
+            "description": {},
+            "url": {
+              "path": [
+                "gpt",
+                "getPopularPodcasts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "en-us",
+                  "description": "(Required) Determine the parameter based on the user's language: `zh-tw (Zhōngwén), `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02c95b63-671b-431f-9b63-698d4871572d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getPopularPodcasts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "en-us"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"image\": \"string\",\n        \"author\": \"string\",\n        \"language\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5ee7d60-99d3-408a-beb0-b7f862643bf4",
+          "name": "Users can get popular, hot podcast episodes",
+          "request": {
+            "name": "Users can get popular, hot podcast episodes",
+            "description": {},
+            "url": {
+              "path": [
+                "gpt",
+                "getPopularEpisodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "en-us",
+                  "description": "(Required) Determine the parameter based on the user's language: `zh-tw (Zhōngwén), `en-us (English)`, `zh-tw (Zhōngwén)` or `ja-jp (Japanese)`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e27cc143-a756-421d-8d00-bcca43c2e49d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getPopularEpisodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "en-us"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\",\n        \"guid\": \"string\",\n        \"duration\": 4701.897039073576\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\",\n        \"guid\": \"string\",\n        \"duration\": 8556.723878395487\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cf55758-f07d-4602-957f-decd2581b90d",
+          "name": "Users can request a specific kind of zh-tw (Zhōngwén) episodes using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...",
+          "request": {
+            "name": "Users can request a specific kind of zh-tw (Zhōngwén) episodes using relevant keywords related to social-and-culture, news, comedy-and-music, art, business, technology, recreation, etc...",
+            "description": {},
+            "url": {
+              "path": [
+                "gpt",
+                "getEpisodesByCategory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "zh-tw",
+                  "description": "(Required) Determine the parameter based on the user's language: `zh-tw (Zhōngwén)`"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryId",
+                  "value": "business",
+                  "description": "(Required) Type of podcast, social-and-culture, news, comedy-and-music, art, business, technology, recreation, education, kid-and-family, fiction, health-and-fitness, sport, crime, history, tv-and-movie, religion, science, music, government"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee54d076-279e-469a-b7bd-0118d6be30fc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getEpisodesByCategory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "zh-tw"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "business"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\",\n        \"guid\": \"string\",\n        \"duration\": 4701.897039073576\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\",\n        \"guid\": \"string\",\n        \"duration\": 8556.723878395487\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1a28065-43a6-470d-943c-91ce10f0480f",
+          "name": "Users can get latest podcast episodes by podcastId",
+          "request": {
+            "name": "Users can get latest podcast episodes by podcastId",
+            "description": {},
+            "url": {
+              "path": [
+                "gpt",
+                "getEpisodesByPodcast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "podcastId",
+                  "value": "<string>",
+                  "description": "(Required) The podcastId be query"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f430b8da-280c-403e-914b-ead2c16d3222",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gpt",
+                    "getEpisodesByPodcast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "podcastId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gpt\": {\n    \"items\": [\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\",\n        \"guid\": \"string\",\n        \"duration\": 4701.897039073576\n      },\n      {\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"id\": \"string\",\n        \"guid\": \"string\",\n        \"duration\": 8556.723878395487\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://calendar.mixerbox.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0e117d43-f138-4600-a230-7c3c92f094ec",
+    "name": "MixerBox Calendar Gpt API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This plugin enables users to efficiently get information from Google Calendar.",
+      "type": "text/plain"
+    }
+  }
+}

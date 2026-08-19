@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MixerBox Calendar Gpt Services?funcs=GetWeatherInfo&mobile=0 API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services?funcs=GetWeatherInfo&mobile=0",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current or forecast weather data based on given locations,  including over 200,000 cities around the world.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/services?funcs=GetWeatherInfo&mobile=0",
+            "params": [
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "The longitude of location you want to query for."
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "The latitude of location you want to query for."
+              },
+              {
+                "name": "dataType",
+                "value": "",
+                "type": "query",
+                "description": "Parameter to specify weather data type. \"daily\" support 1-day step for up to 16 days weather data, which is useful for long-term forecast. \"5day_3hour\" support 3-hour step for 5 days weather data, which is useful for short-term forecast"
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "The units of measurement. Temperature will be given in Celsius for \"metric\" and in Fahrenheit for \"imperial\". The default value is \"metric\". Choose a proper value according to the measurement convention of the location you query."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "The count of weather item want to return. Only works when data type is \"daily\" or \"5day_3hour\""
+              }
+            ]
+          },
+          "docs": "With a simple weather query, the plugin delivers weather details, including a description of the weather conditions, temperature, humidity, rain probability, wind speed, and atmospheric pressure."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

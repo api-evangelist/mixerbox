@@ -1,0 +1,2038 @@
+{
+  "item": [
+    {
+      "id": "70215d15-fb8d-4f45-a818-290560234f8e",
+      "name": "Gpt Plugins",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2dfabdae-9b4c-47d5-828b-6db2968f8895",
+          "name": "Authorize the user's Google account permissions to access his/her calendars.",
+          "request": {
+            "name": "Authorize the user's Google account permissions to access his/her calendars.",
+            "description": {
+              "content": "This api allow you to launch request for authorizing Google account permissions. You can launch the request without confirming with the user. A url will be returned, please ask the user to visit the url to continue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "calendar",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "src",
+                  "value": "google",
+                  "description": "(Required) The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ab317be-e4df-4ec8-aef2-6573496ba417",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "calendar",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "src",
+                      "value": "google"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "815df377-f75f-4f75-9aff-c200080db470",
+          "name": "Log out the user's Google account.",
+          "request": {
+            "name": "Log out the user's Google account.",
+            "description": {
+              "content": "This api allow you to log out from a Google account, so that the user can log in to another one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "calendar",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "src",
+                  "value": "google",
+                  "description": "(Required) The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc7d0f61-2f43-42fd-99a3-cf7c9882a5e2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "calendar",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "src",
+                      "value": "google"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8839263-dd06-4f56-889f-d5e425ed80fc",
+          "name": "Lists all of the user's calendars.",
+          "request": {
+            "name": "Lists all of the user's calendars.",
+            "description": {
+              "content": "This api allow you to fetch all calendars of the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "calendar",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e72f6381-d6a9-4548-81e4-3a3cff8ce840",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "calendar",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"accessRole\": \"string\",\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"primary\": true,\n      \"summary\": \"string\",\n      \"summaryOverride\": \"string\",\n      \"timeZone\": \"string\"\n    },\n    {\n      \"accessRole\": \"string\",\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"primary\": true,\n      \"summary\": \"string\",\n      \"summaryOverride\": \"string\",\n      \"timeZone\": \"string\"\n    }\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "489fca78-1bf9-45cf-b711-f6128b87c4f1",
+          "name": "List events in a time range of a calendar by a calendar ID. Ask the user to select which calendar to list from the response of ListCalendar API.",
+          "request": {
+            "name": "List events in a time range of a calendar by a calendar ID. Ask the user to select which calendar to list from the response of ListCalendar API.",
+            "description": {
+              "content": "This api allows you to list events in a time range by one of the user's calendar ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "calendar",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "calendarId",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the calendar to list events."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<RFC3339>",
+                  "description": "(Required) The start time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<RFC3339>",
+                  "description": "(Required) The end time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "To fetch data from the next page, provide the 'nextPageToken' from the response of this API."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df3d3ddf-41bc-41e8-82be-0670c10fb4fa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "calendar",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "calendarId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<RFC3339>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<RFC3339>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"creator\": {\n        \"email\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"1998-01-17T09:55:10.024Z\",\n        \"timeZone\": \"string\"\n      },\n      \"hangoutLink\": \"string\",\n      \"htmlLink\": \"string\",\n      \"location\": \"string\",\n      \"start\": {\n        \"dateTime\": \"2003-11-15T08:19:29.659Z\",\n        \"timeZone\": \"string\"\n      },\n      \"summary\": \"string\"\n    },\n    {\n      \"creator\": {\n        \"email\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"1952-10-07T06:03:20.806Z\",\n        \"timeZone\": \"string\"\n      },\n      \"hangoutLink\": \"string\",\n      \"htmlLink\": \"string\",\n      \"location\": \"string\",\n      \"start\": {\n        \"dateTime\": \"1976-08-10T09:34:20.452Z\",\n        \"timeZone\": \"string\"\n      },\n      \"summary\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50bde5df-a552-4599-9f33-2cbeb6e8d83c",
+          "name": "Add a event on a calendar by a calendar ID.",
+          "request": {
+            "name": "Add a event on a calendar by a calendar ID.",
+            "description": {
+              "content": "This api allow you to add a event on a calendar by its ID with several options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "calendar",
+                "add_event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calendarId\": \"<string>\",\n  \"start\": \"<string>\",\n  \"end\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"attendeeEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"createMeetingLink\": false,\n  \"description\": \"<string>\",\n  \"location\": \"<string>\",\n  \"recurrence\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sendUpdates\": \"<string>\",\n  \"setDefaultReminder\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec18821f-9626-4551-9e50-f875e4344865",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "calendar",
+                    "add_event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"calendarId\": \"<string>\",\n  \"start\": \"<string>\",\n  \"end\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"attendeeEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"createMeetingLink\": false,\n  \"description\": \"<string>\",\n  \"location\": \"<string>\",\n  \"recurrence\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sendUpdates\": \"<string>\",\n  \"setDefaultReminder\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"creator\": {\n        \"email\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"1986-07-26T20:20:16.365Z\",\n        \"timeZone\": \"string\"\n      },\n      \"hangoutLink\": \"string\",\n      \"htmlLink\": \"string\",\n      \"location\": \"string\",\n      \"start\": {\n        \"dateTime\": \"1978-06-20T10:25:07.796Z\",\n        \"timeZone\": \"string\"\n      },\n      \"summary\": \"string\"\n    },\n    {\n      \"creator\": {\n        \"email\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"1954-10-06T22:10:45.874Z\",\n        \"timeZone\": \"string\"\n      },\n      \"hangoutLink\": \"string\",\n      \"htmlLink\": \"string\",\n      \"location\": \"string\",\n      \"start\": {\n        \"dateTime\": \"2013-07-05T11:11:23.232Z\",\n        \"timeZone\": \"string\"\n      },\n      \"summary\": \"string\"\n    }\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7746313-44f8-45b2-a937-880671d5bf58",
+          "name": "Get free time slots in a time range from all the user's calendars.",
+          "request": {
+            "name": "Get free time slots in a time range from all the user's calendars.",
+            "description": {
+              "content": "This api allows you to fetch free time slots from all the user's calendars. The max time range is 50 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "calendar",
+                "free"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<RFC3339>",
+                  "description": "(Required) The start time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<RFC3339>",
+                  "description": "(Required) The end time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API."
+                },
+                {
+                  "disabled": false,
+                  "key": "minDuration",
+                  "value": "<number>",
+                  "description": "To find time slots longer than this value (in seconds)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<number>",
+                  "description": "To fetch data from the next page, provide the 'nextPageToken' from the response of this API."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c980911-a7b2-4ef5-97d2-c249af5ab649",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "calendar",
+                    "free"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<RFC3339>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<RFC3339>"
+                    },
+                    {
+                      "key": "minDuration",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"duration\": 5595,\n      \"end\": 8640,\n      \"start\": 4391\n    },\n    {\n      \"duration\": 1749,\n      \"end\": 4117,\n      \"start\": 9061\n    }\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21e80b12-60a4-4906-94f3-c746a1ece7d9",
+          "name": "Enable users to upload a PDF file by providing a publicly accessible PDF URL link.",
+          "request": {
+            "name": "Enable users to upload a PDF file by providing a publicly accessible PDF URL link.",
+            "description": {
+              "content": "Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "chat_pdf",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "537d5dfc-6de1-413d-ae8c-cd3408ffa462",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "chat_pdf",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chunks\": [\n    \"string\",\n    \"string\"\n  ],\n  \"url\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2baa2e1-c536-4019-b876-dd07b90ce888",
+              "name": "Error occur when loading user providing file, the reason might be pdf is too many pages or the file is too large.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "chat_pdf",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63cd8c78-e883-4c5d-a1bc-f895bc3f6b2b",
+          "name": "Enable users to issue commands and ask questions related to the PDF content.",
+          "request": {
+            "name": "Enable users to issue commands and ask questions related to the PDF content.",
+            "description": {
+              "content": "After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "chat_pdf",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59986017-9024-4256-8437-5b6baabe300c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "chat_pdf",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chunks\": [\n    \"string\",\n    \"string\"\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa813053-203c-4cae-b60e-3d2ec0706b88",
+          "name": "Generate the image of diagram and a online editor url to help edit the given diagram.",
+          "request": {
+            "name": "Generate the image of diagram and a online editor url to help edit the given diagram.",
+            "description": {
+              "content": "This api will generate the diagram image according to the given diagram content. Also provide a online editor url for further usage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "diagrams",
+                "render"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "diagramType",
+                  "value": "vegalite",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "diagramContent",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bff8094-bb59-461f-ba04-6e681e966434",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "diagrams",
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "diagramType",
+                      "value": "vegalite"
+                    },
+                    {
+                      "key": "diagramContent",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"diagramEditorUrl\": \"string\",\n  \"diagramImageUrl\": \"string\",\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "623b7761-6036-40e3-8f67-9db918ea0f10",
+          "name": "After users express their ideas, the plugin generates optimized prompts to integrate with AI image-generation platforms and creates a link that connects users to the DALL·E 2 generation platform.",
+          "request": {
+            "name": "After users express their ideas, the plugin generates optimized prompts to integrate with AI image-generation platforms and creates a link that connects users to the DALL·E 2 generation platform.",
+            "description": {
+              "content": "The plugin transforms inputs into prompts, specifically optimized for AI image generation, and generates a link that connects users to the DALL·E 2 generation platform. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "image_gen"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Description of the image, do not contain space in query"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "3",
+                  "description": "The upper bound of prompts count"
+                },
+                {
+                  "disabled": false,
+                  "key": "get_image",
+                  "value": "true",
+                  "description": "(Required) Indicates if urls should be included in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_wallpaper",
+                  "value": "false",
+                  "description": "Indicates if mobile wallpapers should be generated"
+                },
+                {
+                  "disabled": false,
+                  "key": "model_type",
+                  "value": "realistic",
+                  "description": "Indicates the style of the model used in generating the images"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16368c61-219c-4382-8a57-b2f9d54298d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "image_gen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "key": "get_image",
+                      "value": "true"
+                    },
+                    {
+                      "key": "is_wallpaper",
+                      "value": "false"
+                    },
+                    {
+                      "key": "model_type",
+                      "value": "realistic"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"prompt\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"prompt\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64f6a4cf-7046-4bf3-8870-e12e061637bf",
+          "name": "Enhance image resolution with a powerful super-resolution API. Sharper details, improved quality. Seamless integration, customizable.",
+          "request": {
+            "name": "Enhance image resolution with a powerful super-resolution API. Sharper details, improved quality. Seamless integration, customizable.",
+            "description": {
+              "content": "This API enhances image resolution, producing sharper details, and removes noise for improved visual quality. It seamlessly integrates into applications and offers customization options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "photo_magic",
+                "super_resolution"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "image_url",
+                  "value": "<uri>",
+                  "description": "(Required) URL of the image to be enhanced"
+                },
+                {
+                  "disabled": false,
+                  "key": "scale",
+                  "value": "<number>",
+                  "description": "Scaling factor (optional)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eea329db-cb3d-4d88-a174-a6c509298fc6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "photo_magic",
+                    "super_resolution"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "image_url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "scale",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7884934e-81c3-4671-bff9-0872b5a84043",
+          "name": "rephrase",
+          "request": {
+            "name": "rephrase",
+            "description": {
+              "content": "Optimizing your question for clarity and completeness can improve the quality of the prompt. Refining the question to strive for perfection can greatly enhance the overall quality of the prompt.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "prompt_pro",
+                "prompt_optimize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90dad74a-ccf4-4cab-9201-5763b88a25b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "prompt_pro",
+                    "prompt_optimize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"text\": \"string\",\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd59c0be-fdfb-4d01-840b-18d82e8deae3",
+          "name": "Generate QR code with user description",
+          "request": {
+            "name": "Generate QR code with user description",
+            "description": {
+              "content": "Generate QR code by url and appearance descriptions. Ignore the properties if the user is not provided and is not required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "qr",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"darkColor\": {},\n  \"lightColor\": {},\n  \"width\": {},\n  \"highRecognitionRate\": {},\n  \"prompt\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6841ff6a-178d-4490-b600-676a9079e5e2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "qr",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"darkColor\": {},\n  \"lightColor\": {},\n  \"width\": {},\n  \"highRecognitionRate\": {},\n  \"prompt\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageUrl\": \"string\",\n  \"items\": [\n    {\n      \"qrUrl\": \"string\"\n    },\n    {\n      \"qrUrl\": \"string\"\n    }\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e634295a-d016-405d-b4f7-a01e0e7baf71",
+              "name": "The URL you provided might be invalid, please provide a valid URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "qr",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"darkColor\": {},\n  \"lightColor\": {},\n  \"width\": {},\n  \"highRecognitionRate\": {},\n  \"prompt\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cda76e3e-f8d7-4106-9e93-82a8fc2cfc83",
+          "name": "Enable users to upload a PDF file by providing a publicly accessible PDF URL link.",
+          "request": {
+            "name": "Enable users to upload a PDF file by providing a publicly accessible PDF URL link.",
+            "description": {
+              "content": "Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "scholar",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd26234c-b489-49ca-a6cd-fb3e0b094683",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "scholar",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chunks\": [\n    \"string\",\n    \"string\"\n  ],\n  \"documentId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc27afdf-85a6-412d-9ae4-622c072d84b7",
+              "name": "Error occur when loading user providing file, the reason might be pdf is too many pages or the file is too large.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "scholar",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f85ce5db-185d-4e68-825f-4fb7d7510d1b",
+          "name": "Enable users to issue commands and ask questions related to the PDF content.",
+          "request": {
+            "name": "Enable users to issue commands and ask questions related to the PDF content.",
+            "description": {
+              "content": "After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "scholar",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d67dff25-3c08-4e05-8b33-916f3ba17c4e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "scholar",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chunks\": [\n    \"string\",\n    \"string\"\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "002f6bf4-640b-4b65-8739-2a3a5b2fd2c9",
+          "name": "Retrieve abstracts of academic papers that are relevant to specific keywords or topics.",
+          "request": {
+            "name": "Retrieve abstracts of academic papers that are relevant to specific keywords or topics.",
+            "description": {
+              "content": "List out all the relevant abstracts related to the specific keywords or topics entered by the users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "scholar",
+                "abstract"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"sort\": \"cited_by_count\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d4b8273-08d7-4038-9bba-317f8e08c64e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "scholar",
+                    "abstract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"sort\": \"cited_by_count\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"title\": \"string\",\n      \"pdfUrl\": \"string\",\n      \"abstract\": \"string\",\n      \"paperUrl\": \"string\",\n      \"citedCount\": 5422.959179114233\n    },\n    {\n      \"title\": \"string\",\n      \"pdfUrl\": \"string\",\n      \"abstract\": \"string\",\n      \"paperUrl\": \"string\",\n      \"citedCount\": 3712.5577592240656\n    }\n  ],\n  \"rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bd160a3-2627-421d-9e47-5a682f405f0a",
+          "name": "Provide a description of how to express a particular phrase or term in a different language.",
+          "request": {
+            "name": "Provide a description of how to express a particular phrase or term in a different language.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "translate",
+                "translate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"translate_phrase\": \"<string>\",\n  \"learning_language\": \"<string>\",\n  \"native_language\": \"<string>\",\n  \"origin_query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5bf9345-b0aa-44c5-ab95-2e1fc2265a58",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "translate",
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"translate_phrase\": \"<string>\",\n  \"learning_language\": \"<string>\",\n  \"native_language\": \"<string>\",\n  \"origin_query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"translate_phrase\": \"string\",\n  \"learning_language\": \"string\",\n  \"native_language\": \"string\",\n  \"extra_response_instructions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61b3c97c-317a-413c-a5e7-e89b9f50646e",
+          "name": "Provide a description of the significance and application of a particular phrase in a non-native language that the user is inquiring about.",
+          "request": {
+            "name": "Provide a description of the significance and application of a particular phrase in a non-native language that the user is inquiring about.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "translate",
+                "explain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"explain_phrase\": \"<string>\",\n  \"learning_language\": \"<string>\",\n  \"native_language\": \"<string>\",\n  \"origin_query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e431982-7e72-482e-acbd-aa4242287cca",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "translate",
+                    "explain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"explain_phrase\": \"<string>\",\n  \"learning_language\": \"<string>\",\n  \"native_language\": \"<string>\",\n  \"origin_query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"explain_phrase\": \"string\",\n  \"learning_language\": \"string\",\n  \"native_language\": \"string\",\n  \"extra_response_instructions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d0869d8-d4a2-43b8-9fbb-79029440dcbe",
+          "name": "Offer guidance on the most effective approach to expressing or executing a task in a particular circumstance or context using a foreign language. Implement this endpoint when the user poses broad or overarching inquiries.",
+          "request": {
+            "name": "Offer guidance on the most effective approach to expressing or executing a task in a particular circumstance or context using a foreign language. Implement this endpoint when the user poses broad or overarching inquiries.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "gpt_plugins",
+                "translate",
+                "task"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_definition\": \"<string>\",\n  \"learning_language\": \"<string>\",\n  \"native_language\": \"<string>\",\n  \"origin_query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "897e82e0-979b-4bca-8710-9cf7fd8e12a9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gpt_plugins",
+                    "translate",
+                    "task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_definition\": \"<string>\",\n  \"learning_language\": \"<string>\",\n  \"native_language\": \"<string>\",\n  \"origin_query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"task_definition\": \"string\",\n  \"learning_language\": \"string\",\n  \"native_language\": \"string\",\n  \"extra_response_instructions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://calendar.mixerbox.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02ee711e-7c87-4427-a9a4-2dbeb383c466",
+    "name": "MixerBox Calendar Gpt Gpt Plugins API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This plugin enables users to efficiently get information from Google Calendar.",
+      "type": "text/plain"
+    }
+  }
+}

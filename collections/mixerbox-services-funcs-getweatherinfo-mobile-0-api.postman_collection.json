@@ -1,0 +1,162 @@
+{
+  "item": [
+    {
+      "id": "49ff2763-1637-4500-88e7-252f05af6167",
+      "name": "Services?funcs=GetWeatherInfo&mobile=0",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77da7a94-2b4d-4ef7-944a-abcfd4250db2",
+          "name": "Get current or forecast weather data based on given locations,  including over 200,000 cities around the world.",
+          "request": {
+            "name": "Get current or forecast weather data based on given locations,  including over 200,000 cities around the world.",
+            "description": {
+              "content": "With a simple weather query, the plugin delivers weather details, including a description of the weather conditions, temperature, humidity, rain probability, wind speed, and atmospheric pressure.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "funcs",
+                  "value": "GetWeatherInfo"
+                },
+                {
+                  "key": "mobile",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<string>",
+                  "description": "The longitude of location you want to query for."
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<string>",
+                  "description": "The latitude of location you want to query for."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataType",
+                  "value": "<string>",
+                  "description": "Parameter to specify weather data type. \"daily\" support 1-day step for up to 16 days weather data, which is useful for long-term forecast. \"5day_3hour\" support 3-hour step for 5 days weather data, which is useful for short-term forecast"
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "The units of measurement. Temperature will be given in Celsius for \"metric\" and in Fahrenheit for \"imperial\". The default value is \"metric\". Choose a proper value according to the measurement convention of the location you query."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "The count of weather item want to return. Only works when data type is \"daily\" or \"5day_3hour\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7e5aac1-ca62-497d-8703-f65bef785c51",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "longitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"getWeatherInfo\": {\n    \"items\": [\n      {\n        \"timestamp\": 3213,\n        \"description\": \"string\",\n        \"temperature\": {\n          \"average\": 2128.608428108666,\n          \"max\": 5514.91992558805,\n          \"min\": 2283.6362974073045,\n          \"feels_like\": 3783.062617716273\n        },\n        \"clouds\": 1954.498545267198,\n        \"wind\": {\n          \"speed\": 439.1558377855531,\n          \"deg\": 2615.8461631078567,\n          \"gust\": 4254.165494483989\n        },\n        \"humidity\": 6264.430202233772,\n        \"pressure\": 5537.303634209125,\n        \"pop\": 4094.663154957111\n      },\n      {\n        \"timestamp\": 8495,\n        \"description\": \"string\",\n        \"temperature\": {\n          \"average\": 130.02240028398893,\n          \"max\": 7073.9769642805295,\n          \"min\": 6358.83585577263,\n          \"feels_like\": 9592.70265195992\n        },\n        \"clouds\": 8840.58724196729,\n        \"wind\": {\n          \"speed\": 3030.889490863968,\n          \"deg\": 859.966758895876,\n          \"gust\": 5310.26885593912\n        },\n        \"humidity\": 4948.140587606663,\n        \"pressure\": 7452.404107903727,\n        \"pop\": 7980.01005248387\n      }\n    ],\n    \"rules\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://calendar.mixerbox.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c042c43-a536-4775-ac4c-29e74652c940",
+    "name": "MixerBox Calendar Gpt Services?funcs=GetWeatherInfo&mobile=0 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This plugin enables users to efficiently get information from Google Calendar.",
+      "type": "text/plain"
+    }
+  }
+}

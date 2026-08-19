@@ -1,0 +1,397 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MixerBox Calendar Gpt Gpt Plugins API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gpt Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authorize the user's Google account permissions to access his/her calendars.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/calendar/authorize",
+            "params": [
+              {
+                "name": "src",
+                "value": "",
+                "type": "query",
+                "description": "The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported."
+              }
+            ]
+          },
+          "docs": "This api allow you to launch request for authorizing Google account permissions. You can launch the request without confirming with the user. A url will be returned, please ask the user to visit the url to continue."
+        },
+        {
+          "info": {
+            "name": "Log out the user's Google account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/calendar/logout",
+            "params": [
+              {
+                "name": "src",
+                "value": "",
+                "type": "query",
+                "description": "The source of the calendars. If the user asks for an invalid source, tell the user that this is not supported."
+              }
+            ]
+          },
+          "docs": "This api allow you to log out from a Google account, so that the user can log in to another one."
+        },
+        {
+          "info": {
+            "name": "Lists all of the user's calendars.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/calendar/list"
+          },
+          "docs": "This api allow you to fetch all calendars of the user."
+        },
+        {
+          "info": {
+            "name": "List events in a time range of a calendar by a calendar ID. Ask the user to select which calendar to list from the response of ListCalendar API.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/calendar/events",
+            "params": [
+              {
+                "name": "calendarId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the calendar to list events."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "The start time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "The end time of the events to be listed. Provide in RFC3339 format with the time zone, find the corresponding time zone for the calendar in the response of the ListCalendar API."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "To fetch data from the next page, provide the 'nextPageToken' from the response of this API."
+              }
+            ]
+          },
+          "docs": "This api allows you to list events in a time range by one of the user's calendar ID."
+        },
+        {
+          "info": {
+            "name": "Add a event on a calendar by a calendar ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/calendar/add_event",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This api allow you to add a event on a calendar by its ID with several options."
+        },
+        {
+          "info": {
+            "name": "Get free time slots in a time range from all the user's calendars.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/calendar/free",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "The start time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "The end time range to find free time slots. Provide in RFC3339 format with the time zone, find the time zone in the response of the ListCalendar API."
+              },
+              {
+                "name": "minDuration",
+                "value": "",
+                "type": "query",
+                "description": "To find time slots longer than this value (in seconds)."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "To fetch data from the next page, provide the 'nextPageToken' from the response of this API."
+              }
+            ]
+          },
+          "docs": "This api allows you to fetch free time slots from all the user's calendars. The max time range is 50 days."
+        },
+        {
+          "info": {
+            "name": "Enable users to upload a PDF file by providing a publicly accessible PDF URL link.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/chat_pdf/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file."
+        },
+        {
+          "info": {
+            "name": "Enable users to issue commands and ask questions related to the PDF content.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/chat_pdf/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections."
+        },
+        {
+          "info": {
+            "name": "Generate the image of diagram and a online editor url to help edit the given diagram.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/diagrams/render",
+            "params": [
+              {
+                "name": "diagramType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "diagramContent",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This api will generate the diagram image according to the given diagram content. Also provide a online editor url for further usage."
+        },
+        {
+          "info": {
+            "name": "After users express their ideas, the plugin generates optimized prompts to integrate with AI image-generation platforms and creates a link that connects users to the DALL·E 2 generation platform.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/image_gen",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Description of the image, do not contain space in query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The upper bound of prompts count"
+              },
+              {
+                "name": "get_image",
+                "value": "",
+                "type": "query",
+                "description": "Indicates if urls should be included in the response"
+              },
+              {
+                "name": "is_wallpaper",
+                "value": "",
+                "type": "query",
+                "description": "Indicates if mobile wallpapers should be generated"
+              },
+              {
+                "name": "model_type",
+                "value": "",
+                "type": "query",
+                "description": "Indicates the style of the model used in generating the images"
+              }
+            ]
+          },
+          "docs": "The plugin transforms inputs into prompts, specifically optimized for AI image generation, and generates a link that connects users to the DALL·E 2 generation platform. "
+        },
+        {
+          "info": {
+            "name": "Enhance image resolution with a powerful super-resolution API. Sharper details, improved quality. Seamless integration, customizable.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/photo_magic/super_resolution",
+            "params": [
+              {
+                "name": "image_url",
+                "value": "",
+                "type": "query",
+                "description": "URL of the image to be enhanced"
+              },
+              {
+                "name": "scale",
+                "value": "",
+                "type": "query",
+                "description": "Scaling factor (optional)"
+              }
+            ]
+          },
+          "docs": "This API enhances image resolution, producing sharper details, and removes noise for improved visual quality. It seamlessly integrates into applications and offers customization options."
+        },
+        {
+          "info": {
+            "name": "rephrase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/prompt_pro/prompt_optimize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Optimizing your question for clarity and completeness can improve the quality of the prompt. Refining the question to strive for perfection can greatly enhance the overall quality of the prompt."
+        },
+        {
+          "info": {
+            "name": "Generate QR code with user description",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/qr/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate QR code by url and appearance descriptions. Ignore the properties if the user is not provided and is not required."
+        },
+        {
+          "info": {
+            "name": "Enable users to upload a PDF file by providing a publicly accessible PDF URL link.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/scholar/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file."
+        },
+        {
+          "info": {
+            "name": "Enable users to issue commands and ask questions related to the PDF content.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/scholar/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections."
+        },
+        {
+          "info": {
+            "name": "Retrieve abstracts of academic papers that are relevant to specific keywords or topics.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/scholar/abstract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List out all the relevant abstracts related to the specific keywords or topics entered by the users."
+        },
+        {
+          "info": {
+            "name": "Provide a description of how to express a particular phrase or term in a different language.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/translate/translate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide a description of how to express a particular phrase or term in a different language."
+        },
+        {
+          "info": {
+            "name": "Provide a description of the significance and application of a particular phrase in a non-native language that the user is inquiring about.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/translate/explain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide a description of the significance and application of a particular phrase in a non-native language that the user is inquiring about."
+        },
+        {
+          "info": {
+            "name": "Offer guidance on the most effective approach to expressing or executing a task in a particular circumstance or context using a foreign language. Implement this endpoint when the user poses broad or overarching inquiries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://calendar.mixerbox.com/api/gpt_plugins/translate/task",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Offer guidance on the most effective approach to expressing or executing a task in a particular circumstance or context using a foreign language. Implement this endpoint when the user poses broad or overarching inquiries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
