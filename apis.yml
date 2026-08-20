@@ -49,6 +49,8 @@ apis:
   humanURL: https://www.mixerbox.com/oneplayer
   baseURL: https://www.mbplayer.com
   tags:
+  - GPT
+  tags_raw:
   - Gpt
   properties:
   - type: OpenAPI
