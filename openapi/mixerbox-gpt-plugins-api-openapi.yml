@@ -1,17 +1,25 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: MixerBox Calendar Gpt Gpt Plugins API
-  description: This plugin enables users to efficiently get information from Google Calendar.
+  title: Mixerbox Gpt Plugins API
   version: v1
+  description: 'Operations tagged Gpt Plugins across 9 of this provider''s published API definitions: mixerbox-calendar-openapi-original.json, mixerbox-chatpdf-openapi-original.json, mixerbox-diagrams-openapi-original.json, mixerbox-imagegen-openapi-original.json, mixerbox-photomagic-openapi-original.json, mixerbox-promptpro-openapi-original.json, mixerbox-qr-openapi-original.json, mixerbox-scholar-openapi-original.json, mixerbox-translate-openapi-original.json.'
 servers:
 - url: https://calendar.mixerbox.com
+- url: https://chatpdf.mixerbox.com
+- url: https://diagrams.mixerbox.com
+- url: https://imagegen.mixerbox.com
+- url: https://photomagic.mixerbox.com
+- url: https://promptpro.mixerbox.com
+- url: https://qr.mixerbox.com
+- url: https://scholar.mixerbox.com
+- url: https://translate.mixerbox.com
 tags:
 - name: Gpt Plugins
 paths:
   /api/gpt_plugins/calendar/authorize:
     get:
       operationId: Authorize
-      summary: Authorize the user's Google account permissions to access his/her calendars.
+      summary: Authorize the user's Google account permissions to access his/her calendars
       description: This api allow you to launch request for authorizing Google account permissions. You can launch the request without confirming with the user. A url will be returned, please ask the user to visit the url to continue.
       parameters:
       - in: query
@@ -32,10 +40,12 @@ paths:
                 $ref: '#/components/schemas/AuthorizeResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://calendar.mixerbox.com
   /api/gpt_plugins/calendar/logout:
     get:
       operationId: Logout
-      summary: Log out the user's Google account.
+      summary: Log out the user's Google account
       description: This api allow you to log out from a Google account, so that the user can log in to another one.
       parameters:
       - in: query
@@ -56,10 +66,12 @@ paths:
                 $ref: '#/components/schemas/LogoutResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://calendar.mixerbox.com
   /api/gpt_plugins/calendar/list:
     get:
       operationId: ListCalendar
-      summary: Lists all of the user's calendars.
+      summary: Lists all of the user's calendars
       description: This api allow you to fetch all calendars of the user.
       responses:
         '200':
@@ -70,10 +82,12 @@ paths:
                 $ref: '#/components/schemas/ListCalendarResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://calendar.mixerbox.com
   /api/gpt_plugins/calendar/events:
     get:
       operationId: ListEvent
-      summary: List events in a time range of a calendar by a calendar ID. Ask the user to select which calendar to list from the response of ListCalendar API.
+      summary: List events in a time range of a calendar by a calendar ID.
       description: This api allows you to list events in a time range by one of the user's calendar ID.
       parameters:
       - in: query
@@ -111,10 +125,12 @@ paths:
                 $ref: '#/components/schemas/ListEventResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://calendar.mixerbox.com
   /api/gpt_plugins/calendar/add_event:
     post:
       operationId: AddEvent
-      summary: Add a event on a calendar by a calendar ID.
+      summary: Add a event on a calendar by a calendar ID
       description: This api allow you to add a event on a calendar by its ID with several options.
       requestBody:
         required: true
@@ -185,10 +201,12 @@ paths:
                 $ref: '#/components/schemas/AddEventResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://calendar.mixerbox.com
   /api/gpt_plugins/calendar/free:
     get:
       operationId: GetFreeTime
-      summary: Get free time slots in a time range from all the user's calendars.
+      summary: Get free time slots in a time range from all the user's calendars
       description: This api allows you to fetch free time slots from all the user's calendars. The max time range is 50 days.
       parameters:
       - in: query
@@ -227,9 +245,11 @@ paths:
                 $ref: '#/components/schemas/GetFreeTimeResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://calendar.mixerbox.com
   /api/gpt_plugins/chat_pdf/upload:
     post:
-      summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL link.
+      summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL…
       description: Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.
       operationId: uploadFile
       requestBody:
@@ -267,9 +287,11 @@ paths:
                     title: Error message.
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://chatpdf.mixerbox.com
   /api/gpt_plugins/chat_pdf/query:
     post:
-      summary: Enable users to issue commands and ask questions related to the PDF content.
+      summary: Enable users to issue commands and ask questions related to the PDF content
       description: After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.
       operationId: queryFile
       requestBody:
@@ -299,10 +321,12 @@ paths:
                 $ref: '#/components/schemas/searchPdfResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://chatpdf.mixerbox.com
   /api/gpt_plugins/diagrams/render:
     get:
       operationId: render
-      summary: Generate the image of diagram and a online editor url to help edit the given diagram.
+      summary: Generate the image of diagram and a online editor url to help edit the given…
       description: This api will generate the diagram image according to the given diagram content. Also provide a online editor url for further usage.
       parameters:
       - in: query
@@ -340,10 +364,12 @@ paths:
                 $ref: '#/components/schemas/RenderResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://diagrams.mixerbox.com
   /api/gpt_plugins/image_gen:
     get:
-      summary: After users express their ideas, the plugin generates optimized prompts to integrate with AI image-generation platforms and creates a link that connects users to the DALL·E 2 generation platform.
-      description: 'The plugin transforms inputs into prompts, specifically optimized for AI image generation, and generates a link that connects users to the DALL·E 2 generation platform. '
+      summary: After users express their ideas, the plugin generates optimized prompts to…
+      description: The plugin transforms inputs into prompts, specifically optimized for AI image generation, and generates a link that connects users to the DALL·E 2 generation platform.
       operationId: imageGeneration
       parameters:
       - in: query
@@ -395,10 +421,12 @@ paths:
                 $ref: '#/components/schemas/ImageGenResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://imagegen.mixerbox.com
   /api/gpt_plugins/photo_magic/super_resolution:
     get:
       operationId: EnhanceResolution
-      summary: Enhance image resolution with a powerful super-resolution API. Sharper details, improved quality. Seamless integration, customizable.
+      summary: Enhance image resolution with a powerful super-resolution API.
       description: This API enhances image resolution, producing sharper details, and removes noise for improved visual quality. It seamlessly integrates into applications and offers customization options.
       parameters:
       - name: image_url
@@ -423,6 +451,8 @@ paths:
                 $ref: '#/components/schemas/ImageResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://photomagic.mixerbox.com
   /api/gpt_plugins/prompt_pro/prompt_optimize:
     post:
       description: Optimizing your question for clarity and completeness can improve the quality of the prompt. Refining the question to strive for perfection can greatly enhance the overall quality of the prompt.
@@ -448,6 +478,10 @@ paths:
                 $ref: '#/components/schemas/PromptProResponse'
       tags:
       - Gpt Plugins
+      summary: Rephrase
+      x-summary-source: derived
+    servers:
+    - url: https://promptpro.mixerbox.com
   /api/gpt_plugins/qr/generate:
     post:
       operationId: generateQr
@@ -514,9 +548,11 @@ paths:
                     title: Error message
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://qr.mixerbox.com
   /api/gpt_plugins/scholar/upload:
     post:
-      summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL link.
+      summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL…
       description: Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.
       operationId: uploadFile
       requestBody:
@@ -554,9 +590,11 @@ paths:
                     title: Error message.
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://scholar.mixerbox.com
   /api/gpt_plugins/scholar/query:
     post:
-      summary: Enable users to issue commands and ask questions related to the PDF content.
+      summary: Enable users to issue commands and ask questions related to the PDF content
       description: After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.
       operationId: queryFile
       requestBody:
@@ -586,9 +624,11 @@ paths:
                 $ref: '#/components/schemas/searchPdfResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://scholar.mixerbox.com
   /api/gpt_plugins/scholar/abstract:
     post:
-      summary: Retrieve abstracts of academic papers that are relevant to specific keywords or topics.
+      summary: Retrieve abstracts of academic papers that are relevant to specific keywords or…
       description: List out all the relevant abstracts related to the specific keywords or topics entered by the users.
       operationId: searchAbstract
       requestBody:
@@ -624,10 +664,12 @@ paths:
                 $ref: '#/components/schemas/QueryAbstractResponse'
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://scholar.mixerbox.com
   /api/gpt_plugins/translate/translate:
     post:
       operationId: translate
-      summary: Provide a description of how to express a particular phrase or term in a different language.
+      summary: Provide a description of how to express a particular phrase or term in a…
       requestBody:
         required: true
         content:
@@ -678,10 +720,12 @@ paths:
                     description: The instructions which need chatgpt model to follow.
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://translate.mixerbox.com
   /api/gpt_plugins/translate/explain:
     post:
       operationId: explain
-      summary: Provide a description of the significance and application of a particular phrase in a non-native language that the user is inquiring about.
+      summary: Provide a description of the significance and application of a particular…
       requestBody:
         required: true
         content:
@@ -729,10 +773,12 @@ paths:
                     description: The instructions which need chatgpt model to follow.
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://translate.mixerbox.com
   /api/gpt_plugins/translate/task:
     post:
       operationId: task
-      summary: Offer guidance on the most effective approach to expressing or executing a task in a particular circumstance or context using a foreign language. Implement this endpoint when the user poses broad or overarching inquiries.
+      summary: Offer guidance on the most effective approach to expressing or executing a task…
       requestBody:
         required: true
         content:
@@ -780,146 +826,22 @@ paths:
                     description: The instructions which need chatgpt model to follow.
       tags:
       - Gpt Plugins
+    servers:
+    - url: https://translate.mixerbox.com
 components:
   schemas:
-    LogoutResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The result of logout.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
-    ImageGenResponse:
-      title: ImageGenResponse
-      type: object
-      properties:
-        items:
-          title: Generated prompts or images
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageGenItem'
-          description: Generated prompts or images based on descriptions.
-        rules:
-          $ref: '#/components/schemas/Rules'
-    Rules:
-      title: The array of rules which recommend gpt to follow.
-      type: array
-      items:
-        type: string
-      description: The array of rules which recommend gpt to follow.
-    EventDateTime:
-      type: object
-      properties:
-        dateTime:
-          type: string
-          format: date-time
-          description: The date and time of the event
-        timeZone:
-          type: string
-          description: The time zone of the dateTime
-    GenerateQrResponse:
-      required:
-      - generateQr
-      type: object
-      properties:
-        pageUrl:
-          title: QR Code generation link
-          description: A clickable link on a webpage, not a link to an QR Code. This website will generate the QR Code.
-          type:
-          - string
-          - 'null'
-        items:
-          title: The array of QRCode results
-          description: The result of converting the link to QRCode.
-          type: array
-          items:
-            $ref: '#/components/schemas/GenerateQrItem'
-        rules:
-          title: The array of rules which recommend gpt to follow
-          description: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-    ListEventResponse:
-      type: object
-      properties:
-        items:
-          title: Search results.
-          type: array
-          items:
-            $ref: '#/components/schemas/ListEventItem'
-          description: The searched events from the specified calendar.
-        nextPageToken:
-          title: The 'pageToken' for the next page.
-          type: string
-          description: Provide this as 'nextPageToken' to fetch the next page.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
     AuthorizeResponse:
       type: object
       properties:
         url:
           type: string
           description: The url to authorize Google account permissions.
-    ListEventItem:
+    LogoutResponse:
       type: object
       properties:
-        creator:
-          type: object
-          properties:
-            email:
-              type: string
-              description: The email of the event creator
-        end:
-          $ref: '#/components/schemas/EventDateTime'
-        hangoutLink:
+        message:
           type: string
-          description: The hangout link associated with the event
-        htmlLink:
-          type: string
-          description: The HTML link of the event
-        location:
-          type: string
-          description: The location of the event
-        start:
-          $ref: '#/components/schemas/EventDateTime'
-        summary:
-          type: string
-          description: The summary or title of the event
-    RenderResponse:
-      type: object
-      properties:
-        diagramEditorUrl:
-          type: string
-          description: The url to allow someone edit the diagrams with an online editor.
-        diagramImageUrl:
-          type: string
-          description: The url of diagrams iamge.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
-    searchPdfResponse:
-      title: searchPdfResponse
-      type: object
-      properties:
-        chunks:
-          title: The array of related query results
-          type: array
-          items:
-            type: string
-          description: The array of related query results
+          description: The result of logout.
         rules:
           title: The array of rules which recommend gpt to follow.
           type: array
@@ -950,38 +872,6 @@ components:
         timeZone:
           type: string
           description: The time zone of the calendar
-    ImageGenItem:
-      type: object
-      properties:
-        prompt:
-          title: Prompt for the image generation model
-          type: string
-        url:
-          title: A clickable link on a webpage, not a link to an image. This website will generate the image.
-          type:
-          - string
-          - 'null'
-    GenerateQrItem:
-      type: object
-      properties:
-        qrUrl:
-          type: string
-          title: QRcode URL
-    AddEventResponse:
-      type: object
-      properties:
-        items:
-          title: Added result.
-          type: array
-          items:
-            $ref: '#/components/schemas/ListEventItem'
-          description: The event added to the specified calendar.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
     GetFreeTimeResponse:
       type: object
       properties:
@@ -997,13 +887,15 @@ components:
           items:
             type: string
           description: The array of rules which recommend gpt to follow.
-    PromptProResponse:
-      title: PromptProResponse
+    AddEventResponse:
       type: object
       properties:
-        text:
-          type: string
-          description: The rephrased prompt text.
+        items:
+          title: Added result.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEventItem'
+          description: The event added to the specified calendar.
         rules:
           title: The array of rules which recommend gpt to follow.
           type: array
@@ -1025,15 +917,81 @@ components:
           items:
             type: string
           description: The array of rules which recommend gpt to follow.
-    QueryAbstractResponse:
-      title: QueryAbstractResponse
+    ListEventItem:
+      type: object
+      properties:
+        creator:
+          type: object
+          properties:
+            email:
+              type: string
+              description: The email of the event creator
+        end:
+          $ref: '#/components/schemas/EventDateTime'
+        hangoutLink:
+          type: string
+          description: The hangout link associated with the event
+        htmlLink:
+          type: string
+          description: The HTML link of the event
+        location:
+          type: string
+          description: The location of the event
+        start:
+          $ref: '#/components/schemas/EventDateTime'
+        summary:
+          type: string
+          description: The summary or title of the event
+    FreeTimeItem:
+      type: object
+      properties:
+        duration:
+          type: integer
+          description: Duration of the time slot in seconds
+        end:
+          type: integer
+          description: End timestamp of the time slot
+        start:
+          type: integer
+          description: Start timestamp of the time slot
+    EventDateTime:
+      type: object
+      properties:
+        dateTime:
+          type: string
+          format: date-time
+          description: The date and time of the event
+        timeZone:
+          type: string
+          description: The time zone of the dateTime
+    ListEventResponse:
       type: object
       properties:
         items:
+          title: Search results.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEventItem'
+          description: The searched events from the specified calendar.
+        nextPageToken:
+          title: The 'pageToken' for the next page.
+          type: string
+          description: Provide this as 'nextPageToken' to fetch the next page.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    searchPdfResponse:
+      title: searchPdfResponse
+      type: object
+      properties:
+        chunks:
           title: The array of related query results
           type: array
           items:
-            $ref: '#/components/schemas/QueryAbstractItem'
+            type: string
           description: The array of related query results
         rules:
           title: The array of rules which recommend gpt to follow.
@@ -1041,6 +999,105 @@ components:
           items:
             type: string
           description: The array of rules which recommend gpt to follow.
+    loadPdfResponse:
+      title: loadPdfResponse
+      required:
+      - url
+      - chunks
+      type: object
+      properties:
+        chunks:
+          title: The array of pdf summary results
+          type: array
+          items:
+            type: string
+          description: use this array to generate pdf summary results for user.
+    RenderResponse:
+      type: object
+      properties:
+        diagramEditorUrl:
+          type: string
+          description: The url to allow someone edit the diagrams with an online editor.
+        diagramImageUrl:
+          type: string
+          description: The url of diagrams iamge.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    ImageGenItem:
+      type: object
+      properties:
+        prompt:
+          title: Prompt for the image generation model
+          type: string
+        url:
+          title: A clickable link on a webpage, not a link to an image. This website will generate the image.
+          type:
+          - string
+          - 'null'
+    Rules:
+      title: The array of rules which recommend gpt to follow.
+      type: array
+      items:
+        type: string
+      description: The array of rules which recommend gpt to follow.
+    ImageGenResponse:
+      title: ImageGenResponse
+      type: object
+      properties:
+        items:
+          title: Generated prompts or images
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageGenItem'
+          description: Generated prompts or images based on descriptions.
+        rules:
+          $ref: '#/components/schemas/Rules'
+    PromptProResponse:
+      title: PromptProResponse
+      type: object
+      properties:
+        text:
+          type: string
+          description: The rephrased prompt text.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    GenerateQrItem:
+      type: object
+      properties:
+        qrUrl:
+          type: string
+          title: QRcode URL
+    GenerateQrResponse:
+      required:
+      - generateQr
+      type: object
+      properties:
+        pageUrl:
+          title: QR Code generation link
+          description: A clickable link on a webpage, not a link to an QR Code. This website will generate the QR Code.
+          type:
+          - string
+          - 'null'
+        items:
+          title: The array of QRCode results
+          description: The result of converting the link to QRCode.
+          type: array
+          items:
+            $ref: '#/components/schemas/GenerateQrItem'
+        rules:
+          title: The array of rules which recommend gpt to follow
+          description: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
     QueryAbstractItem:
       type: object
       properties:
@@ -1059,31 +1116,6 @@ components:
         citedCount:
           title: Related paper citation count
           type: number
-    loadPdfResponse:
-      title: loadPdfResponse
-      required:
-      - url
-      - chunks
-      type: object
-      properties:
-        chunks:
-          title: The array of pdf summary results
-          type: array
-          items:
-            type: string
-          description: use this array to generate pdf summary results for user.
-    FreeTimeItem:
-      type: object
-      properties:
-        duration:
-          type: integer
-          description: Duration of the time slot in seconds
-        end:
-          type: integer
-          description: End timestamp of the time slot
-        start:
-          type: integer
-          description: Start timestamp of the time slot
     loadPdfResponse_2:
       title: loadPdfResponse
       required:
@@ -1097,3 +1129,29 @@ components:
           items:
             type: string
           description: use this array to generate pdf summary results for user.
+    QueryAbstractResponse:
+      title: QueryAbstractResponse
+      type: object
+      properties:
+        items:
+          title: The array of related query results
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryAbstractItem'
+          description: The array of related query results
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+x-refined-from:
+- mixerbox-calendar-openapi-original.json
+- mixerbox-chatpdf-openapi-original.json
+- mixerbox-diagrams-openapi-original.json
+- mixerbox-imagegen-openapi-original.json
+- mixerbox-photomagic-openapi-original.json
+- mixerbox-promptpro-openapi-original.json
+- mixerbox-qr-openapi-original.json
+- mixerbox-scholar-openapi-original.json
+- mixerbox-translate-openapi-original.json

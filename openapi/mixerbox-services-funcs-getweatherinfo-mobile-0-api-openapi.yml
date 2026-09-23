@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: MixerBox Calendar Gpt Services?funcs=GetWeatherInfo&mobile=0 API
-  description: This plugin enables users to efficiently get information from Google Calendar.
+  title: MixerBox Weather Services?funcs=Get Weather Info&mobile=0…
+  description: The plugin enables users to access real-time weather information and forecasts. After users type a weather query, it will provide all the essential details within the chat window.
   version: v1
 servers:
-- url: https://calendar.mixerbox.com
+- url: https://weather.mixerbox.com
 tags:
 - name: Services?funcs=GetWeatherInfo&mobile=0
 paths:
   /services?funcs=GetWeatherInfo&mobile=0:
     get:
       operationId: getWeatherInfo
-      summary: Get current or forecast weather data based on given locations,  including over 200,000 cities around the world.
+      summary: Get current or forecast weather data based on given locations, including over…
       description: With a simple weather query, the plugin delivers weather details, including a description of the weather conditions, temperature, humidity, rain probability, wind speed, and atmospheric pressure.
       parameters:
       - in: query
@@ -57,6 +57,26 @@ paths:
       - Services?funcs=GetWeatherInfo&mobile=0
 components:
   schemas:
+    WeatherInfoResponse:
+      required:
+      - getWeatherInfo
+      type: object
+      properties:
+        getWeatherInfo:
+          type: object
+          properties:
+            items:
+              type: array
+              title: Result Of Weather Item List
+              description: Result of weather item list.
+              items:
+                $ref: '#/components/schemas/WeatherItem'
+            rules:
+              type: array
+              title: The array of rules which recommend gpt to follow.
+              description: The array of rules which recommend gpt to follow.
+              items:
+                type: string
     WeatherItem:
       type: object
       properties:
@@ -108,23 +128,3 @@ components:
         pop:
           type: number
           title: Probability of Precipitation
-    WeatherInfoResponse:
-      required:
-      - getWeatherInfo
-      type: object
-      properties:
-        getWeatherInfo:
-          type: object
-          properties:
-            items:
-              type: array
-              title: Result Of Weather Item List
-              description: Result of weather item list.
-              items:
-                $ref: '#/components/schemas/WeatherItem'
-            rules:
-              type: array
-              title: The array of rules which recommend gpt to follow.
-              description: The array of rules which recommend gpt to follow.
-              items:
-                type: string
