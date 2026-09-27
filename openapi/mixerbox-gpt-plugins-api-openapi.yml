@@ -554,7 +554,7 @@ paths:
     post:
       summary: Enable users to upload a PDF file by providing a publicly accessible PDF URL…
       description: Users can upload PDF files by providing a publicly accessible URL link. Once the file is successfully loaded, the plugin will return a unique document ID that represents the uploaded file and the summary for this pdf file.
-      operationId: uploadFile
+      operationId: postApiGptPluginsScholarUpload
       requestBody:
         required: true
         content:
@@ -590,13 +590,15 @@ paths:
                     title: Error message.
       tags:
       - Gpt Plugins
+      x-operation-id-source: normalized
+      x-operation-id-original: uploadFile
     servers:
     - url: https://scholar.mixerbox.com
   /api/gpt_plugins/scholar/query:
     post:
       summary: Enable users to issue commands and ask questions related to the PDF content
       description: After users interact with the plugin, it processes the queries, searches for relevant information within the PDF, and provides answers or references to the corresponding sections.
-      operationId: queryFile
+      operationId: postApiGptPluginsScholarQuery
       requestBody:
         required: true
         content:
@@ -624,6 +626,8 @@ paths:
                 $ref: '#/components/schemas/searchPdfResponse'
       tags:
       - Gpt Plugins
+      x-operation-id-source: normalized
+      x-operation-id-original: queryFile
     servers:
     - url: https://scholar.mixerbox.com
   /api/gpt_plugins/scholar/abstract:
@@ -830,18 +834,15 @@ paths:
     - url: https://translate.mixerbox.com
 components:
   schemas:
-    AuthorizeResponse:
+    GetFreeTimeResponse:
       type: object
       properties:
-        url:
-          type: string
-          description: The url to authorize Google account permissions.
-    LogoutResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The result of logout.
+        items:
+          title: Added result.
+          type: array
+          items:
+            $ref: '#/components/schemas/FreeTimeItem'
+          description: The event added to the specified calendar.
         rules:
           title: The array of rules which recommend gpt to follow.
           type: array
@@ -872,21 +873,6 @@ components:
         timeZone:
           type: string
           description: The time zone of the calendar
-    GetFreeTimeResponse:
-      type: object
-      properties:
-        items:
-          title: Added result.
-          type: array
-          items:
-            $ref: '#/components/schemas/FreeTimeItem'
-          description: The event added to the specified calendar.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
     AddEventResponse:
       type: object
       properties:
@@ -896,21 +882,6 @@ components:
           items:
             $ref: '#/components/schemas/ListEventItem'
           description: The event added to the specified calendar.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
-    ListCalendarResponse:
-      type: object
-      properties:
-        items:
-          title: Search results.
-          type: array
-          items:
-            $ref: '#/components/schemas/ListCalendarItem'
-          description: The searched calendars of the user. List events in a time range of a calendar by a calendar ID. You can ask the user to select a calendar in order to list events on that calendar.
         rules:
           title: The array of rules which recommend gpt to follow.
           type: array
@@ -942,6 +913,31 @@ components:
         summary:
           type: string
           description: The summary or title of the event
+    ListCalendarResponse:
+      type: object
+      properties:
+        items:
+          title: Search results.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCalendarItem'
+          description: The searched calendars of the user. List events in a time range of a calendar by a calendar ID. You can ask the user to select a calendar in order to list events on that calendar.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    EventDateTime:
+      type: object
+      properties:
+        dateTime:
+          type: string
+          format: date-time
+          description: The date and time of the event
+        timeZone:
+          type: string
+          description: The time zone of the dateTime
     FreeTimeItem:
       type: object
       properties:
@@ -954,16 +950,12 @@ components:
         start:
           type: integer
           description: Start timestamp of the time slot
-    EventDateTime:
+    AuthorizeResponse:
       type: object
       properties:
-        dateTime:
+        url:
           type: string
-          format: date-time
-          description: The date and time of the event
-        timeZone:
-          type: string
-          description: The time zone of the dateTime
+          description: The url to authorize Google account permissions.
     ListEventResponse:
       type: object
       properties:
@@ -977,6 +969,18 @@ components:
           title: The 'pageToken' for the next page.
           type: string
           description: Provide this as 'nextPageToken' to fetch the next page.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    LogoutResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The result of logout.
         rules:
           title: The array of rules which recommend gpt to follow.
           type: array

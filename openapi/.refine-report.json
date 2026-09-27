@@ -17,9 +17,11 @@
   "outputs": [
     "mixerbox-gpt-plugins-api-openapi.yml",
     "mixerbox-gpt-api-openapi.yml",
-    "mixerbox-services-funcs-getweatherinfo-mobile-0-api-openapi.yml"
+    "mixerbox-services-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [
     "mixerbox-photomagic-openapi-original.json: dangling $ref: #/components/schemas/ImageResponse"
   ],
@@ -79,11 +81,12 @@
     "mixerbox-translate-openapi-original.json: tagged paths POST /api/gpt_plugins/translate/task -> Gpt Plugins",
     "mixerbox-translate-openapi-original.json: declared missing tag: Gpt Plugins",
     "mixerbox-weather-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "mixerbox-weather-openapi-original.json: tagged paths GET /services?funcs=GetWeatherInfo&mobile=0 -> Services?funcs=GetWeatherInfo&mobile=0",
-    "mixerbox-weather-openapi-original.json: declared missing tag: Services?funcs=GetWeatherInfo&mobile=0",
+    "mixerbox-weather-openapi-original.json: tagged paths GET /services?funcs=GetWeatherInfo&mobile=0 -> Services",
+    "mixerbox-weather-openapi-original.json: declared missing tag: Services",
     "tag 'Gpt Plugins' spans 9 source specs (mixerbox-calendar-openapi-original.json, mixerbox-chatpdf-openapi-original.json, mixerbox-diagrams-openapi-original.json, mixerbox-imagegen-openapi-original.json, mixerbox-photomagic-openapi-original.json, mixerbox-promptpro-openapi-original.json, mixerbox-qr-openapi-original.json, mixerbox-scholar-openapi-original.json, mixerbox-translate-openapi-original.json): per-path servers applied",
     "tag 'Gpt' spans 2 source specs (mixerbox-oneplayer-openapi-original.json, mixerbox-podcasts-openapi-original.json): per-path servers applied",
-    "apis.yml register: already-registered"
+    "superseded outputs removed: mixerbox-services-funcs-getweatherinfo-mobile-0-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 3 total)"
   ],
   "skipped": [
     "mixerbox-gpt-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -125,17 +125,16 @@ apis:
     url: well-known/mixerbox-diagrams-ai-plugin.json
   - type: WellKnown
     url: well-known/mixerbox-promptpro-ai-plugin.json
-- aid: mixerbox:mixerbox-services-funcs-getweatherinfo-mobile-0-api
-  name: MixerBox Services?funcs=GetWeatherInfo&mobile=0 API
-  description: >-
-    The Services?funcs=GetWeatherInfo&mobile=0 API from MixerBox — 1 operation(s) for services?funcs=getweatherinfo&mobile=0.
+- aid: mixerbox:mixerbox-services-api
+  name: MixerBox Services API
+  description: The Services API from MixerBox — 1 operation(s) for services.
   humanURL: https://www.mixerbox.com/oneplayer
   baseURL: https://www.mbplayer.com
   tags:
-  - Services?funcs=GetWeatherInfo&mobile=0
+  - Services
   properties:
   - type: OpenAPI
-    url: openapi/mixerbox-services-funcs-getweatherinfo-mobile-0-api-openapi.yml
+    url: openapi/mixerbox-services-api-openapi.yml
   - type: WellKnown
     url: well-known/mixerbox-oneplayer-ai-plugin.json
   - type: WellKnown

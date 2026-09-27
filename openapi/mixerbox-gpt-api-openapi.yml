@@ -356,22 +356,6 @@ components:
               items:
                 $ref: '#/components/schemas/PlaylistItem'
               description: The playlists of musics.
-    MusicsResponse:
-      title: MusicsResponse
-      required:
-      - gpt
-      type: object
-      properties:
-        gpt:
-          title: GPTResponse
-          type: object
-          properties:
-            items:
-              title: Result of Musics
-              type: array
-              items:
-                $ref: '#/components/schemas/MusicItem'
-              description: The array of musics.
     PodcastItem:
       type: object
       properties:
@@ -409,30 +393,6 @@ components:
               items:
                 $ref: '#/components/schemas/PodcastItem'
               description: The array of Podcasts.
-    PlaylistItem:
-      type: object
-      properties:
-        title:
-          title: Playlist Title
-          type: string
-        thumbnail:
-          title: Playlist thumbnail
-          type: string
-        ref:
-          title: Playlist Id
-          type: string
-        size:
-          title: The number of musics in playlist
-          type: number
-        releaseDate:
-          title: Release date of playlist
-          type: string
-        owner:
-          title: Owner of playlist
-          type: string
-        url:
-          title: Playlist Url
-          type: string
     MusicItem:
       type: object
       properties:
@@ -460,8 +420,32 @@ components:
         description:
           title: Music description
           type: string
-    EpisodesResponse:
-      title: EpisodesResponse
+    PlaylistItem:
+      type: object
+      properties:
+        title:
+          title: Playlist Title
+          type: string
+        thumbnail:
+          title: Playlist thumbnail
+          type: string
+        ref:
+          title: Playlist Id
+          type: string
+        size:
+          title: The number of musics in playlist
+          type: number
+        releaseDate:
+          title: Release date of playlist
+          type: string
+        owner:
+          title: Owner of playlist
+          type: string
+        url:
+          title: Playlist Url
+          type: string
+    MusicsResponse:
+      title: MusicsResponse
       required:
       - gpt
       type: object
@@ -471,11 +455,11 @@ components:
           type: object
           properties:
             items:
-              title: Result of Podcast Episodes
+              title: Result of Musics
               type: array
               items:
-                $ref: '#/components/schemas/EpisodeItem'
-              description: The array of Podcast Episodes.
+                $ref: '#/components/schemas/MusicItem'
+              description: The array of musics.
     EpisodeItem:
       type: object
       properties:
@@ -494,6 +478,22 @@ components:
         duration:
           title: Episode duration in second
           type: number
+    EpisodesResponse:
+      title: EpisodesResponse
+      required:
+      - gpt
+      type: object
+      properties:
+        gpt:
+          title: GPTResponse
+          type: object
+          properties:
+            items:
+              title: Result of Podcast Episodes
+              type: array
+              items:
+                $ref: '#/components/schemas/EpisodeItem'
+              description: The array of Podcast Episodes.
     PodcastItem_2:
       type: object
       properties:

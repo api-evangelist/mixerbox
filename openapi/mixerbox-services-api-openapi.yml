@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
-  title: MixerBox Weather Services?funcs=Get Weather Info&mobile=0…
+  title: MixerBox Weather Services API
   description: The plugin enables users to access real-time weather information and forecasts. After users type a weather query, it will provide all the essential details within the chat window.
   version: v1
 servers:
 - url: https://weather.mixerbox.com
 tags:
-- name: Services?funcs=GetWeatherInfo&mobile=0
+- name: Services
 paths:
   /services?funcs=GetWeatherInfo&mobile=0:
     get:
@@ -54,29 +54,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/WeatherInfoResponse'
       tags:
-      - Services?funcs=GetWeatherInfo&mobile=0
+      - Services
 components:
   schemas:
-    WeatherInfoResponse:
-      required:
-      - getWeatherInfo
-      type: object
-      properties:
-        getWeatherInfo:
-          type: object
-          properties:
-            items:
-              type: array
-              title: Result Of Weather Item List
-              description: Result of weather item list.
-              items:
-                $ref: '#/components/schemas/WeatherItem'
-            rules:
-              type: array
-              title: The array of rules which recommend gpt to follow.
-              description: The array of rules which recommend gpt to follow.
-              items:
-                type: string
     WeatherItem:
       type: object
       properties:
@@ -128,3 +108,23 @@ components:
         pop:
           type: number
           title: Probability of Precipitation
+    WeatherInfoResponse:
+      required:
+      - getWeatherInfo
+      type: object
+      properties:
+        getWeatherInfo:
+          type: object
+          properties:
+            items:
+              type: array
+              title: Result Of Weather Item List
+              description: Result of weather item list.
+              items:
+                $ref: '#/components/schemas/WeatherItem'
+            rules:
+              type: array
+              title: The array of rules which recommend gpt to follow.
+              description: The array of rules which recommend gpt to follow.
+              items:
+                type: string
