@@ -19,9 +19,7 @@
     "mixerbox-gpt-api-openapi.yml",
     "mixerbox-services-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [
     "mixerbox-photomagic-openapi-original.json: dangling $ref: #/components/schemas/ImageResponse"
   ],
@@ -85,12 +83,11 @@
     "mixerbox-weather-openapi-original.json: declared missing tag: Services",
     "tag 'Gpt Plugins' spans 9 source specs (mixerbox-calendar-openapi-original.json, mixerbox-chatpdf-openapi-original.json, mixerbox-diagrams-openapi-original.json, mixerbox-imagegen-openapi-original.json, mixerbox-photomagic-openapi-original.json, mixerbox-promptpro-openapi-original.json, mixerbox-qr-openapi-original.json, mixerbox-scholar-openapi-original.json, mixerbox-translate-openapi-original.json): per-path servers applied",
     "tag 'Gpt' spans 2 source specs (mixerbox-oneplayer-openapi-original.json, mixerbox-podcasts-openapi-original.json): per-path servers applied",
-    "superseded outputs removed: mixerbox-services-funcs-getweatherinfo-mobile-0-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 3 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "mixerbox-gpt-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mixerbox-gpt-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "mixerbox-services-funcs-getweatherinfo-mobile-0-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "mixerbox-services-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
