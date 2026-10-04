@@ -57,6 +57,26 @@ paths:
       - Services
 components:
   schemas:
+    WeatherInfoResponse:
+      required:
+      - getWeatherInfo
+      type: object
+      properties:
+        getWeatherInfo:
+          type: object
+          properties:
+            items:
+              type: array
+              title: Result Of Weather Item List
+              description: Result of weather item list.
+              items:
+                $ref: '#/components/schemas/WeatherItem'
+            rules:
+              type: array
+              title: The array of rules which recommend gpt to follow.
+              description: The array of rules which recommend gpt to follow.
+              items:
+                type: string
     WeatherItem:
       type: object
       properties:
@@ -108,23 +128,3 @@ components:
         pop:
           type: number
           title: Probability of Precipitation
-    WeatherInfoResponse:
-      required:
-      - getWeatherInfo
-      type: object
-      properties:
-        getWeatherInfo:
-          type: object
-          properties:
-            items:
-              type: array
-              title: Result Of Weather Item List
-              description: Result of weather item list.
-              items:
-                $ref: '#/components/schemas/WeatherItem'
-            rules:
-              type: array
-              title: The array of rules which recommend gpt to follow.
-              description: The array of rules which recommend gpt to follow.
-              items:
-                type: string

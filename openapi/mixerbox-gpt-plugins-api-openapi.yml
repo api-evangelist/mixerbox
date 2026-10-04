@@ -834,90 +834,6 @@ paths:
     - url: https://translate.mixerbox.com
 components:
   schemas:
-    FreeTimeItem:
-      type: object
-      properties:
-        duration:
-          type: integer
-          description: Duration of the time slot in seconds
-        end:
-          type: integer
-          description: End timestamp of the time slot
-        start:
-          type: integer
-          description: Start timestamp of the time slot
-    AddEventResponse:
-      type: object
-      properties:
-        items:
-          title: Added result.
-          type: array
-          items:
-            $ref: '#/components/schemas/ListEventItem'
-          description: The event added to the specified calendar.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
-    LogoutResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The result of logout.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
-    ListCalendarResponse:
-      type: object
-      properties:
-        items:
-          title: Search results.
-          type: array
-          items:
-            $ref: '#/components/schemas/ListCalendarItem'
-          description: The searched calendars of the user. List events in a time range of a calendar by a calendar ID. You can ask the user to select a calendar in order to list events on that calendar.
-        rules:
-          title: The array of rules which recommend gpt to follow.
-          type: array
-          items:
-            type: string
-          description: The array of rules which recommend gpt to follow.
-    ListCalendarItem:
-      type: object
-      properties:
-        accessRole:
-          type: string
-          description: The access role for the calendar
-        description:
-          type: string
-          description: Additional description of the calendar
-        id:
-          type: string
-          description: The ID of the calendar
-        primary:
-          type: boolean
-          description: Indicates if the calendar is the primary calendar
-        summary:
-          type: string
-          description: The summary of the calendar, the user will use this to recognize their calendars
-        summaryOverride:
-          type: string
-          description: The summary overridden by the user if set, the user will use this to recognize their calendars
-        timeZone:
-          type: string
-          description: The time zone of the calendar
-    AuthorizeResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The url to authorize Google account permissions.
     GetFreeTimeResponse:
       type: object
       properties:
@@ -943,6 +859,21 @@ components:
         timeZone:
           type: string
           description: The time zone of the dateTime
+    ListCalendarResponse:
+      type: object
+      properties:
+        items:
+          title: Search results.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCalendarItem'
+          description: The searched calendars of the user. List events in a time range of a calendar by a calendar ID. You can ask the user to select a calendar in order to list events on that calendar.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
     ListEventResponse:
       type: object
       properties:
@@ -956,6 +887,75 @@ components:
           title: The 'pageToken' for the next page.
           type: string
           description: Provide this as 'nextPageToken' to fetch the next page.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    LogoutResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The result of logout.
+        rules:
+          title: The array of rules which recommend gpt to follow.
+          type: array
+          items:
+            type: string
+          description: The array of rules which recommend gpt to follow.
+    FreeTimeItem:
+      type: object
+      properties:
+        duration:
+          type: integer
+          description: Duration of the time slot in seconds
+        end:
+          type: integer
+          description: End timestamp of the time slot
+        start:
+          type: integer
+          description: Start timestamp of the time slot
+    AuthorizeResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The url to authorize Google account permissions.
+    ListCalendarItem:
+      type: object
+      properties:
+        accessRole:
+          type: string
+          description: The access role for the calendar
+        description:
+          type: string
+          description: Additional description of the calendar
+        id:
+          type: string
+          description: The ID of the calendar
+        primary:
+          type: boolean
+          description: Indicates if the calendar is the primary calendar
+        summary:
+          type: string
+          description: The summary of the calendar, the user will use this to recognize their calendars
+        summaryOverride:
+          type: string
+          description: The summary overridden by the user if set, the user will use this to recognize their calendars
+        timeZone:
+          type: string
+          description: The time zone of the calendar
+    AddEventResponse:
+      type: object
+      properties:
+        items:
+          title: Added result.
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEventItem'
+          description: The event added to the specified calendar.
         rules:
           title: The array of rules which recommend gpt to follow.
           type: array
@@ -987,6 +987,19 @@ components:
         summary:
           type: string
           description: The summary or title of the event
+    loadPdfResponse:
+      title: loadPdfResponse
+      required:
+      - url
+      - chunks
+      type: object
+      properties:
+        chunks:
+          title: The array of pdf summary results
+          type: array
+          items:
+            type: string
+          description: use this array to generate pdf summary results for user.
     searchPdfResponse:
       title: searchPdfResponse
       type: object
@@ -1003,19 +1016,6 @@ components:
           items:
             type: string
           description: The array of rules which recommend gpt to follow.
-    loadPdfResponse:
-      title: loadPdfResponse
-      required:
-      - url
-      - chunks
-      type: object
-      properties:
-        chunks:
-          title: The array of pdf summary results
-          type: array
-          items:
-            type: string
-          description: use this array to generate pdf summary results for user.
     RenderResponse:
       type: object
       properties:
@@ -1031,23 +1031,6 @@ components:
           items:
             type: string
           description: The array of rules which recommend gpt to follow.
-    ImageGenItem:
-      type: object
-      properties:
-        prompt:
-          title: Prompt for the image generation model
-          type: string
-        url:
-          title: A clickable link on a webpage, not a link to an image. This website will generate the image.
-          type:
-          - string
-          - 'null'
-    Rules:
-      title: The array of rules which recommend gpt to follow.
-      type: array
-      items:
-        type: string
-      description: The array of rules which recommend gpt to follow.
     ImageGenResponse:
       title: ImageGenResponse
       type: object
@@ -1060,6 +1043,23 @@ components:
           description: Generated prompts or images based on descriptions.
         rules:
           $ref: '#/components/schemas/Rules'
+    Rules:
+      title: The array of rules which recommend gpt to follow.
+      type: array
+      items:
+        type: string
+      description: The array of rules which recommend gpt to follow.
+    ImageGenItem:
+      type: object
+      properties:
+        prompt:
+          title: Prompt for the image generation model
+          type: string
+        url:
+          title: A clickable link on a webpage, not a link to an image. This website will generate the image.
+          type:
+          - string
+          - 'null'
     PromptProResponse:
       title: PromptProResponse
       type: object
@@ -1102,6 +1102,19 @@ components:
         qrUrl:
           type: string
           title: QRcode URL
+    loadPdfResponse_2:
+      title: loadPdfResponse
+      required:
+      - documentId
+      - chunks
+      type: object
+      properties:
+        chunks:
+          title: The array of pdf summary results
+          type: array
+          items:
+            type: string
+          description: use this array to generate pdf summary results for user.
     QueryAbstractResponse:
       title: QueryAbstractResponse
       type: object
@@ -1136,19 +1149,6 @@ components:
         citedCount:
           title: Related paper citation count
           type: number
-    loadPdfResponse_2:
-      title: loadPdfResponse
-      required:
-      - documentId
-      - chunks
-      type: object
-      properties:
-        chunks:
-          title: The array of pdf summary results
-          type: array
-          items:
-            type: string
-          description: use this array to generate pdf summary results for user.
 x-refined-from:
 - mixerbox-calendar-openapi-original.json
 - mixerbox-chatpdf-openapi-original.json
