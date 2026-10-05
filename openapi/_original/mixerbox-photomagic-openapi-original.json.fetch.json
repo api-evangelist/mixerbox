@@ -1,0 +1,12 @@
+{
+ "url": "https://photomagic.mixerbox.com/.well-known/openapi.json",
+ "requested_url": "https://photomagic.mixerbox.com/.well-known/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 3212,
+ "sha256": "593dd2ac864b4d605d055564e1a536135c08caf5a9649beecce1d12c0e214cbc",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

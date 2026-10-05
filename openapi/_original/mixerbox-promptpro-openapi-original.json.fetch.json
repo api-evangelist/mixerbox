@@ -1,0 +1,12 @@
+{
+ "url": "https://promptpro.mixerbox.com/.well-known/openapi.json",
+ "requested_url": "https://promptpro.mixerbox.com/.well-known/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 2023,
+ "sha256": "0a11d76912f3322b2c0fd6bd96fa424cc6cd21150c5754d1acb465dced56f73e",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

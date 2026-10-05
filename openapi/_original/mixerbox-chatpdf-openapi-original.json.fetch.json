@@ -1,0 +1,12 @@
+{
+ "url": "https://chatpdf.mixerbox.com/.well-known/openapi.json",
+ "requested_url": "https://chatpdf.mixerbox.com/.well-known/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 4783,
+ "sha256": "7c599d29c055b2837496522e80183cc1889f02fd9bab357a2fda80d56ba76dab",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
