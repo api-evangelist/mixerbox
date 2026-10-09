@@ -2,7 +2,7 @@
 name: Question a PDF with MixerBox ChatPDF
 description: Upload a PDF and ask questions against its contents using MixerBox ChatPDF.
 api: openapi/mixerbox-chatpdf-openapi-original.json
-operations: [uploadFile, queryFile]
+operations: [postApiGptPluginsScholarUpload, postApiGptPluginsScholarQuery]
 method: generated
 generated: '2026-07-20'
 ---
