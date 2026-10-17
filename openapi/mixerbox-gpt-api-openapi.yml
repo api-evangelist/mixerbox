@@ -340,59 +340,6 @@ paths:
     - url: https://podcasts.mixerbox.com
 components:
   schemas:
-    PodcastsResponse:
-      title: PodcastsResponse
-      required:
-      - gpt
-      type: object
-      properties:
-        gpt:
-          title: GPTResponse
-          type: object
-          properties:
-            items:
-              title: Result of Podcasts
-              type: array
-              items:
-                $ref: '#/components/schemas/PodcastItem'
-              description: The array of Podcasts.
-    PodcastItem:
-      type: object
-      properties:
-        title:
-          title: Podcast Title
-          type: string
-        image:
-          title: Podcast image
-          type: string
-        author:
-          title: Podcast author
-          type: string
-        language:
-          title: Podcast language
-          type: string
-        url:
-          title: Podcast url
-          type: string
-        id:
-          title: Podcast id
-          type: string
-    MusicsResponse:
-      title: MusicsResponse
-      required:
-      - gpt
-      type: object
-      properties:
-        gpt:
-          title: GPTResponse
-          type: object
-          properties:
-            items:
-              title: Result of Musics
-              type: array
-              items:
-                $ref: '#/components/schemas/MusicItem'
-              description: The array of musics.
     PlaylistsResponse:
       title: PlaylistsResponse
       required:
@@ -460,6 +407,59 @@ components:
         description:
           title: Music description
           type: string
+    PodcastsResponse:
+      title: PodcastsResponse
+      required:
+      - gpt
+      type: object
+      properties:
+        gpt:
+          title: GPTResponse
+          type: object
+          properties:
+            items:
+              title: Result of Podcasts
+              type: array
+              items:
+                $ref: '#/components/schemas/PodcastItem'
+              description: The array of Podcasts.
+    MusicsResponse:
+      title: MusicsResponse
+      required:
+      - gpt
+      type: object
+      properties:
+        gpt:
+          title: GPTResponse
+          type: object
+          properties:
+            items:
+              title: Result of Musics
+              type: array
+              items:
+                $ref: '#/components/schemas/MusicItem'
+              description: The array of musics.
+    PodcastItem:
+      type: object
+      properties:
+        title:
+          title: Podcast Title
+          type: string
+        image:
+          title: Podcast image
+          type: string
+        author:
+          title: Podcast author
+          type: string
+        language:
+          title: Podcast language
+          type: string
+        url:
+          title: Podcast url
+          type: string
+        id:
+          title: Podcast id
+          type: string
     EpisodesResponse:
       title: EpisodesResponse
       required:
@@ -476,24 +476,6 @@ components:
               items:
                 $ref: '#/components/schemas/EpisodeItem'
               description: The array of Podcast Episodes.
-    PodcastItem_2:
-      type: object
-      properties:
-        title:
-          title: Podcast Title
-          type: string
-        author:
-          title: Podcast author
-          type: string
-        language:
-          title: Podcast language
-          type: string
-        url:
-          title: Podcast url
-          type: string
-        id:
-          title: Podcast id
-          type: string
     EpisodeItem:
       type: object
       properties:
@@ -512,6 +494,24 @@ components:
         duration:
           title: Episode duration in second
           type: number
+    PodcastItem_2:
+      type: object
+      properties:
+        title:
+          title: Podcast Title
+          type: string
+        author:
+          title: Podcast author
+          type: string
+        language:
+          title: Podcast language
+          type: string
+        url:
+          title: Podcast url
+          type: string
+        id:
+          title: Podcast id
+          type: string
 x-refined-from:
 - mixerbox-oneplayer-openapi-original.json
 - mixerbox-podcasts-openapi-original.json
